@@ -1,25 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
 const AddBook = () => {
-  const [category, setCategory] = useState("");
-  const [status, setStatus] = useState("");
-  // console.log(category, careLevel);
 
-  // const handleCategory = (e) => {
-  //   setCategory(e.target.value);
-  // };
-  // const handleLevel = (e) => {
-  //   setStatus(e.target.value);
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const plantData = Object.fromEntries(formData.entries());
-    const allData = { ...plantData, category, status };
-    console.log(allData);
+    // const allData = { ...plantData };
+    // console.log(allData);
     console.log(plantData);
+    
+
+
   };
 
   return (
@@ -94,37 +88,6 @@ const AddBook = () => {
                   required
                 />
               </fieldset>
-              {/* Reading status */}
-              <fieldset className="fieldset   rounded-box w-full  p-4">
-                <label className="label">Reading Status</label>
-                <select
-                  defaultValue="status"
-                  className="select select-accent w-full border-purple-500"
-                  name="status"
-                  // onChange={handleLevel}
-                >
-                  <option disabled={true}>status</option>
-                  <option>Read</option>
-                  <option>Reading</option>
-                  <option>Want-to-read</option>
-                </select>
-              </fieldset>
-              {/* category */}
-              <fieldset className="fieldset   rounded-box w-full  p-4">
-                <label className="label">Book Category</label>
-                <select
-                  defaultValue="Category"
-                  className="select select-secondary w-full border-purple-500"
-                  name="category"
-                  //  onChange={handleCategory}
-                >
-                  <option disabled={true}>Category</option>
-                  <option>Fiction</option>
-                  <option>Non-Fiction</option>
-                  <option>Fantasy</option>
-                </select>
-              </fieldset>
-              {/* ---------------------------------------- */}
 
               {/* Book author*/}
               <fieldset className="fieldset   rounded-box w-full  p-4">
@@ -134,8 +97,54 @@ const AddBook = () => {
                   className="input w-full border-purple-500"
                   placeholder="Author"
                   name="Book_Author"
+                  required
                 />
               </fieldset>
+              {/* ---------------------------------- */}
+              <div className="flex w-full md:col-span-2">
+                {/* upvote */}
+                <fieldset className="fieldset   rounded-box w-full  p-4">
+                  <label className="label">Up vote</label>
+                  <input
+                    type="text"
+                    className="input w-full border-purple-500"
+                    value={"0"}
+                    name="Book_Author"
+                    required
+                  />
+                </fieldset>
+                {/* Reading status */}
+                <fieldset className="fieldset   rounded-box w-full  p-4">
+                  <label className="label">Reading Status</label>
+                  <select
+                    defaultValue="status"
+                    className="select select-accent w-full border-purple-500"
+                    name="status"
+                    // onChange={handleLevel}
+                  >
+                    <option disabled={true}>status</option>
+                    <option>Read</option>
+                    <option>Reading</option>
+                    <option>Want-to-read</option>
+                  </select>
+                </fieldset>
+                {/* category */}
+                <fieldset className="fieldset   rounded-box w-full  p-4">
+                  <label className="label">Book Category</label>
+                  <select
+                    defaultValue="Category"
+                    className="select select-secondary w-full border-purple-500"
+                    name="category"
+
+                    //  onChange={handleCategory}
+                  >
+                    <option disabled={true}>Category</option>
+                    <option>Fiction</option>
+                    <option>Non-Fiction</option>
+                    <option>Fantasy</option>
+                  </select>
+                </fieldset>
+              </div>
               {/* description */}
               <fieldset className="fieldset   rounded-box w-full  p-4 md:col-span-2 ">
                 <label className="label">Book Overview</label>
@@ -147,27 +156,10 @@ const AddBook = () => {
                 ></textarea>
               </fieldset>
 
-              <fieldset className="fieldset   rounded-box w-full  p-4">
-                <label className="label">Up vote</label>
-                <input
-                  type="number"
-                  className="input w-full border-purple-500"
-                  placeholder="....."
-                  name="up_vote"
-                />
-              </fieldset>
               {/* buttons */}
-              <div className="flex justify-center gap-10 items-center md:col-span-2">
-                <button
-                  type="button"
-                  className="  btn bg-blue-400 text-white w-32 border-0"
-                >
-                  Up Vote
-                </button>
-                <button className="  btn bg-purple-500 text-white w-32 border-0">
-                  Add Book
-                </button>
-              </div>
+              <button className="  btn bg-purple-500 text-white w-32 border-0 ml-4">
+                Add Book
+              </button>
             </div>
           </form>
         </div>

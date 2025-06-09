@@ -1,15 +1,16 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../../assets/test-removebg-preview.png";
 import "./nav.css"
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
-  // const { user, logOutUser } = use(AuthContext);
-  // console.log(user);
-  const user = "hello";
+  const { user, logOutUser } = use(AuthContext);
+  console.log(user);
+
 
   const handleLogOut = () => {
-    // logOutUser();
+    logOutUser();
   };
 
   //theme
