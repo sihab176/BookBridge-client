@@ -1,19 +1,35 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddBook = () => {
-
+  const { user } = use(AuthContext);
+  const { email, displayName } = user || {};
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const plantData = Object.fromEntries(formData.entries());
-    // const allData = { ...plantData };
-    // console.log(allData);
     console.log(plantData);
-    
 
+    //  fetch by axios
 
+    axios
+      .post("http://localhost:3000/books", plantData)
+      .then((res) => {
+        console.log(res.data);
+        Swal.fire({
+          icon: "success",
+          title: "Your successfully added a book ",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -21,7 +37,7 @@ const AddBook = () => {
       {" "}
       <div className="my-10 w-11/12 mx-auto">
         <div className="p-12  ">
-          <div className=" space-y-4 pb-10 border-b border-blue-300">
+          <div className=" space-y-4 pb-10 border-b ">
             <h1 className="text-4xl text-sky-400 font-bold">
               Add your favourite book{" "}
             </h1>
@@ -41,7 +57,7 @@ const AddBook = () => {
                   type="text"
                   className="input w-full  border-purple-500"
                   placeholder="Name.."
-                  // value={displayName}
+                  value={displayName}
                   name="Name"
                 />
               </fieldset>
@@ -52,7 +68,7 @@ const AddBook = () => {
                   type="email"
                   className="input w-full  border-purple-500"
                   placeholder="email"
-                  // value={email}
+                  value={email}
                   name="email"
                 />
               </fieldset>
@@ -109,7 +125,7 @@ const AddBook = () => {
                     type="text"
                     className="input w-full border-purple-500"
                     value={"0"}
-                    name="Book_Author"
+                    name="upVote"
                     required
                   />
                 </fieldset>
@@ -157,8 +173,17 @@ const AddBook = () => {
               </fieldset>
 
               {/* buttons */}
-              <button className="  btn bg-purple-500 text-white w-32 border-0 ml-4">
+              {/* <button className="  btn bg-purple-500 text-white w-32 border-0 ml-4">
                 Add Book
+              </button> */}
+              <button
+                type="submit"
+                className="relative z-10 px-6 py-3  font-semibold  w-32 ml-4  btn bg-purple-400 overflow-hidden group shadow-xl"
+              >
+                <span className="relative z-10">Add Book</span>
+
+                {/* Left-to-right background sweep effect */}
+                <span className="absolute top-0 left-0 h-full w-0 bg-sky-300 transition-all duration-700 ease-out group-hover:w-full z-0"></span>
               </button>
             </div>
           </form>

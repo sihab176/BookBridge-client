@@ -1,13 +1,12 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../../assets/test-removebg-preview.png";
-import "./nav.css"
+import "./nav.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOutUser } = use(AuthContext);
-  console.log(user);
-
+  // console.log(user);
 
   const handleLogOut = () => {
     logOutUser();
@@ -27,7 +26,7 @@ const Navbar = () => {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/bookShelf">BookShelf</NavLink>
       <NavLink to="/addBook">Add Book</NavLink>
-      <NavLink to="/myBook">My Book</NavLink>
+      <NavLink to={`/myBook/${user?.email}`}>My Book</NavLink>
     </>
   );
   return (

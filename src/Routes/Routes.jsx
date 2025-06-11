@@ -13,10 +13,14 @@ export const router = createBrowserRouter([
     path: "/",
     Component: Layout,
     children: [
-        { index: true, Component: Home },
+        { index: true,
+          loader:()=>fetch('http://localhost:3000/books'),
+           Component: Home },
         {path:"/bookShelf",Component:BookShelf},
-        {path:"addBook",Component:AddBook},
-        {path:"myBook",Component:MyBook},
+        {path:"/addBook",Component:AddBook},
+        {path:"/myBook/:email",
+          loader:({params})=>fetch(`http://localhost:3000/my-books/${params.email}`),
+           Component:MyBook},
         {path:"/login",Component:Login},
         {path:"/register",Component:Register},
 
