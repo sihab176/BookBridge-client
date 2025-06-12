@@ -1,13 +1,69 @@
-import React from "react";
-import { useLoaderData } from "react-router";
+import React, { useState } from "react";
+import { Link, useLoaderData } from "react-router";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { VscPreview } from "react-icons/vsc";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const MyBook = () => {
-  const myAllBook = useLoaderData();
-  // console.log(myAllBook);
-  // const { Book_Author, Book_Title, Cover_photo, category, upVote } = book;
+  const AllBook = useLoaderData();
+  const [myAllBook, SetMyAllBook] = useState(AllBook);
+
+  //fetch delete
+  const handleDelete = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          console.log("hello im delete :", id);
+          axios
+            .delete(`http://localhost:3000/books/${id}`)
+            
+            .then((res) => {
+              console.log(res.data);
+
+              if (res.data.deletedCount) {
+                swalWithBootstrapButtons.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success",
+                });
+              }
+
+              const remaingingData = myAllBook.filter(
+                (singleData) => singleData._id !== id
+              );
+              SetMyAllBook(remaingingData);
+            });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your imaginary file is safe :)",
+            icon: "error",
+          });
+        }
+      });
+  };
+
   return (
     <section>
       <div
@@ -64,15 +120,20 @@ const MyBook = () => {
                   </td>
                   <td className="px-3 py-2">
                     <div className="flex gap-5 items-center">
-                      <button className="cursor-pointer">
+                      <button
+                        onClick={() => handleDelete(singleBook._id)}
+                        className="cursor-pointer"
+                      >
                         <RiDeleteBin6Line size={20} />
                       </button>
                       <button className="cursor-pointer">
                         <MdOutlineModeEditOutline size={20} />
                       </button>
+                      <Link to={`/details/${singleBook._id}`}>
                       <button className="cursor-pointer">
                         <VscPreview size={20} />
                       </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>

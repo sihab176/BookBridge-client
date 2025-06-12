@@ -1,9 +1,10 @@
 import React from "react";
 import { BiLike } from "react-icons/bi";
+import { Link } from "react-router";
 
 const CardShower = ({ book }) => {
   console.log(book);
-  const { Book_Author, Book_Title, Cover_photo, category, upVote } = book;
+  const { Book_Author, Book_Title, Cover_photo, category, upVote, _id } = book;
   return (
     <div>
       <div className=" rounded-md shadow-md ">
@@ -11,7 +12,7 @@ const CardShower = ({ book }) => {
           <img
             src={Cover_photo}
             alt=""
-            className="object-cover py-6 object-center w-full rounded-t-md h-[270px] bg-sky-300"
+            className="object-cover py-6 object-center w-full rounded-t-md h-[270px] bg-sky-100"
           />
           <button className="absolute bottom-[-10px] bg-purple-400  px-5 rounded-full ml-5 flex items-center gap-1">
             <BiLike /> Like : {upVote}
@@ -27,15 +28,14 @@ const CardShower = ({ book }) => {
               <p className=" text-gray-400">
                 <span className="font-semibold">category</span> : {category}
               </p>
-              <button
-                type="submit"
-                className="relative z-10 px-4 py-1 btn btn-sm    bg-base-100 overflow-hidden group shadow-xl transition-all duration-300 hover:text-white"
-              >
-                <span className="relative z-10">View More</span>
+              <Link to={`/details/${_id}`}>
+                <button className="relative z-10 px-4 py-1 btn btn-sm    bg-base-100 overflow-hidden group shadow-xl transition-all duration-300 hover:text-white">
+                  <span className="relative z-10">View More</span>
 
-                {/* Background hover effect */}
-                <span className="absolute left-0 top-0 h-full w-full bg-emerald-500 scale-0 group-hover:scale-150 transition-transform duration-700 ease-out rounded-full z-0"></span>
-              </button>
+                  {/* Background hover effect */}
+                  <span className="absolute left-0 top-0 h-full w-full bg-emerald-500 scale-0 group-hover:scale-150 transition-transform duration-700 ease-out rounded-full z-0"></span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

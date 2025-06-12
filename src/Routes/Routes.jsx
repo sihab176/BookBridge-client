@@ -7,23 +7,34 @@ import AddBook from "../Pages/AddBook";
 import MyBook from "../Pages/MyBook";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
+import Details from "../Pages/Details";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Layout,
     children: [
-        { index: true,
-          loader:()=>fetch('http://localhost:3000/books'),
-           Component: Home },
-        {path:"/bookShelf",Component:BookShelf},
-        {path:"/addBook",Component:AddBook},
-        {path:"/myBook/:email",
-          loader:({params})=>fetch(`http://localhost:3000/my-books/${params.email}`),
-           Component:MyBook},
-        {path:"/login",Component:Login},
-        {path:"/register",Component:Register},
-
+      {
+        index: true,
+        loader: () => fetch("http://localhost:3000/books"),
+        Component: Home,
+      },
+      { path: "/bookShelf", Component: BookShelf },
+      { path: "/addBook", Component: AddBook },
+      {
+        path: "/myBook/:email",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/my-books/${params.email}`),
+        Component: MyBook,
+      },
+      { path: "/login", Component: Login },
+      { path: "/register", Component: Register },
+      {
+        path: "/details/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/books/${params.id}`),
+        Component: Details,
+      },
     ],
   },
 ]);

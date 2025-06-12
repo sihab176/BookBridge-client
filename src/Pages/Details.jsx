@@ -1,0 +1,94 @@
+import React from "react";
+import { useLoaderData } from "react-router";
+
+const Details = () => {
+  const singleData = useLoaderData();
+  const {
+    Book_Author,
+    Book_Title,
+    Cover_photo,
+    category,
+    upVote,
+    Total_Page,
+    status,
+    email,
+    overview,
+  } = singleData || {};
+  console.log(category, upVote);
+  return (
+    <div className="w-11/12 mx-auto  my-20">
+      {/* <div className="flex lg:flex-row md:flex-col flex-col gap-6 justify-center ">
+        <div className=" bg-purple-200 py-6 rounded-bl-[160px]  border-4 border-green-400">
+          <img className="md:pl-40 lg:p-0 p-0" src={Cover_photo} alt="" />
+        </div>
+        <div className="px-10 space-y-4">
+          <h1 className="text-5xl font-semibold">{Book_Title}</h1>
+          <p className="text-gray-400">
+            <span className="font-bold ">Author</span> : {Book_Author}
+          </p>
+          <p className="text-gray-400">
+            <span className="font-bold ">Category</span> : {category}
+          </p>
+          <p className="text-gray-400">
+            <span className="font-bold ">Status</span> : {status}
+          </p>
+          <p className="text-gray-400">
+            <span className="font-bold ">Total Page</span> : {Total_Page}
+          </p>
+          <p className="text-gray-400">
+            <span className="font-bold ">Email</span> : {email}
+          </p>
+          <p className="text-gray-400 lg:w-[600px]">
+            <span className="font-bold ">overview</span> : {overview}
+          </p>
+        </div>
+      </div> */}
+      {/* ----------------------------------              ------------------------- */}
+
+      <section className="mt-16 mb-16 flex flex-col md:flex-row justify-center">
+        <div className="bg-sky-100 p-16 rounded-3xl ">
+          <img className="w-[420px] " src={Cover_photo} alt="" />
+        </div>
+        <div className="md:w-[550px] px-10">
+          <h1 className="text-3xl">{Book_Title}</h1>
+          <p>by: {Book_Author}</p>
+          <div className="border-b border-gray-400 p-3"></div>
+          <p className="p-3 text-green-400">{category}</p>
+          <div className="border-b border-gray-400 "></div>
+          <p>
+            <span className="font-bold">overview</span>{" "}
+            <span className="text-gray-400">{overview}</span>
+          </p>
+          {/* <div className='flex gap-16 mt-6 items-center'>
+                    <p className='font-bold'>Tag:</p>
+                    <div className='flex gap-16 text-green-400 my-3'>
+                    {
+                        tags.map(tag=><p>{tag}</p>)
+                    }
+                    </div>
+                </div> */}
+          <div className="border-b border-gray-400 p-3 "></div>
+          <div className="space-y-4 mb-2">
+            <p>
+              Total Pages :{" "}
+              <span className="text-purple-400">{Total_Page}</span>
+            </p>
+            <p>
+              upVote: <span className="text-purple-500">{upVote}</span>
+            </p>
+            <p>
+              Status: <span className="text-gray-400">{status}</span>
+            </p>
+            <p>
+              email: <span className="text-gray-400">{email}</span>
+            </p>
+          </div>
+
+          <button className="btn  bg-purple-500 mr-4 ">up vote</button>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Details;
