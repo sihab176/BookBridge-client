@@ -1,8 +1,13 @@
-import React from "react";
+import React, { use, useState } from "react";
 import { useLoaderData } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const Details = () => {
-  const singleData = useLoaderData();
+  const { user } = use(AuthContext);
+  const data = useLoaderData();
+  const [singleData, setSingleData] = useState(data);
   const {
     Book_Author,
     Book_Title,
@@ -13,8 +18,31 @@ const Details = () => {
     status,
     email,
     overview,
+    _id,
   } = singleData || {};
   console.log(category, upVote);
+
+  // handle upvote
+  const handleUpVote = () => {
+    if (user?.email === email) {
+      return toast.warn("you cant Upvote own book ");
+    }
+    const upVoteInfo = {
+      bookId: _id,
+      upvoterEmail: user?.email,
+    };
+
+    // axios
+    axios
+      .post(`http://localhost:3000/upVote/${_id}`, upVoteInfo)
+      .then((res) => {
+        console.log(res);
+        setSingleData((prev) => {
+          return { ...prev, upVote: prev.upVote + 1 };
+        });
+      });
+  };
+
   return (
     <div className="w-11/12 mx-auto  my-20">
       {/* <div className="flex lg:flex-row md:flex-col flex-col gap-6 justify-center ">
@@ -51,7 +79,7 @@ const Details = () => {
         </div>
         <div className="md:w-[550px] px-10">
           <h1 className="text-3xl">{Book_Title}</h1>
-          <p>by: {Book_Author}</p>
+          <p>Write By: <span className="text-gray-400">{Book_Author}</span></p>
           <div className="border-b border-gray-400 p-3"></div>
           <p className="p-3 text-green-400">{category}</p>
           <div className="border-b border-gray-400 "></div>
@@ -84,9 +112,12 @@ const Details = () => {
             </p>
           </div>
 
-          <button className="btn  bg-purple-500 mr-4 ">up vote</button>
+          <button onClick={handleUpVote} className="btn  bg-purple-500 mr-4 ">
+            up vote
+          </button>
         </div>
       </section>
+      <ToastContainer />
     </div>
   );
 };

@@ -19,7 +19,9 @@ export const router = createBrowserRouter([
         loader: () => fetch("http://localhost:3000/books"),
         Component: Home,
       },
-      { path: "/bookShelf", Component: BookShelf },
+      { path: "/bookShelf",
+        loader: () => fetch("http://localhost:3000/books"),
+         Component: BookShelf },
       { path: "/addBook", Component: AddBook },
       {
         path: "/myBook/:email",

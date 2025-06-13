@@ -3,7 +3,8 @@ import { BiLike } from "react-icons/bi";
 import { Link } from "react-router";
 
 const CardShower = ({ book }) => {
-  console.log(book);
+  // console.log(book);
+ 
   const { Book_Author, Book_Title, Cover_photo, category, upVote, _id } = book;
   return (
     <div>
