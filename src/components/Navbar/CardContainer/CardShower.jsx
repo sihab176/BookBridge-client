@@ -30,8 +30,8 @@ const CardShower = ({ book }) => {
                 <span className="font-semibold">category</span> : {category}
               </p>
               <Link to={`/details/${_id}`}>
-                <button className="relative z-10 px-4 py-1 btn btn-sm    bg-base-100 overflow-hidden group shadow-xl transition-all duration-300 hover:text-white">
-                  <span className="relative z-10">View More</span>
+                <button className="relative  px-4 py-1 btn btn-sm    bg-base-100 overflow-hidden group shadow-xl transition-all duration-300 hover:text-white">
+                  <span className="relative z-5">View More</span>
 
                   {/* Background hover effect */}
                   <span className="absolute left-0 top-0 h-full w-full bg-emerald-500 scale-0 group-hover:scale-150 transition-transform duration-700 ease-out rounded-full z-0"></span>

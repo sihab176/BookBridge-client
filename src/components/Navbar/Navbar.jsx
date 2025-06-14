@@ -81,7 +81,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-4">
           {/* toggle buttons */}
-          <div className="">
+          <div className="mr-8">
             <label
               htmlFor="Toggle1"
               className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-800"
@@ -106,7 +106,7 @@ const Navbar = () => {
                 className="container cursor-pointer"
               >
                 <img
-                  className={`lg:w-12 lg:h-12 md:-10  w-8 rounded-full ring-2 ring-offset-4 hover:${"hello"}`}
+                  className={`lg:w-8 lg:h-8 md:-10  w-8 rounded-full ring-2 ring-offset-4 `}
                   src={user?.photoURL}
                   alt=""
                 />

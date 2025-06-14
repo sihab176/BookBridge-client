@@ -3,6 +3,8 @@ import { useLoaderData } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import Lottie from "lottie-react";
+import reviewAnimition from "../../src/assets/Animation - 1749912324124.json";
 
 const Details = () => {
   const { user } = use(AuthContext);
@@ -20,7 +22,7 @@ const Details = () => {
     overview,
     _id,
   } = singleData || {};
-  console.log(category, upVote);
+  // console.log(category, upVote);
 
   // handle upvote
   const handleUpVote = () => {
@@ -43,43 +45,26 @@ const Details = () => {
       });
   };
 
+  const handleReview = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const bookData = Object.fromEntries(formData.entries());
+    console.log(bookData);
+  };
+
   return (
     <div className="w-11/12 mx-auto  my-20">
-      {/* <div className="flex lg:flex-row md:flex-col flex-col gap-6 justify-center ">
-        <div className=" bg-purple-200 py-6 rounded-bl-[160px]  border-4 border-green-400">
-          <img className="md:pl-40 lg:p-0 p-0" src={Cover_photo} alt="" />
-        </div>
-        <div className="px-10 space-y-4">
-          <h1 className="text-5xl font-semibold">{Book_Title}</h1>
-          <p className="text-gray-400">
-            <span className="font-bold ">Author</span> : {Book_Author}
-          </p>
-          <p className="text-gray-400">
-            <span className="font-bold ">Category</span> : {category}
-          </p>
-          <p className="text-gray-400">
-            <span className="font-bold ">Status</span> : {status}
-          </p>
-          <p className="text-gray-400">
-            <span className="font-bold ">Total Page</span> : {Total_Page}
-          </p>
-          <p className="text-gray-400">
-            <span className="font-bold ">Email</span> : {email}
-          </p>
-          <p className="text-gray-400 lg:w-[600px]">
-            <span className="font-bold ">overview</span> : {overview}
-          </p>
-        </div>
-      </div> */}
-      {/* ----------------------------------              ------------------------- */}
-
       <section className="mt-16 mb-16 flex flex-col md:flex-row justify-center">
         <div className="bg-sky-100 p-16 rounded-3xl ">
           <img className="w-[420px] " src={Cover_photo} alt="" />
         </div>
         <div className="md:w-[550px] px-10">
           <h1 className="text-3xl">{Book_Title}</h1>
-          <p>Write By: <span className="text-gray-400">{Book_Author}</span></p>
+          <p>
+            Write By: <span className="text-gray-400">{Book_Author}</span>
+          </p>
           <div className="border-b border-gray-400 p-3"></div>
           <p className="p-3 text-green-400">{category}</p>
           <div className="border-b border-gray-400 "></div>
@@ -117,6 +102,60 @@ const Details = () => {
           </button>
         </div>
       </section>
+      {/* -----------------------  review  */}
+      <div className="flex items-center">
+        <div className="w-[500px]">
+          <Lottie animationData={reviewAnimition} loop={true}></Lottie>
+        </div>
+        <div>
+          <form onSubmit={handleReview}>
+            <fieldset className="fieldset   rounded-box w-full ">
+              <label className="label">User Name</label>
+              <input
+                type="text"
+                className="input w-[600px]  border-purple-500"
+                placeholder="Name.."
+                name="review"
+              />
+            </fieldset>
+            {/* rating */}
+            {/* <div className="rating">
+              <input
+                type="radio"
+                name="rating-2"
+                value="1"
+                className="mask mask-star-2 bg-orange-400"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                value="2"
+                className="mask mask-star-2 bg-orange-400"
+                defaultChecked
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                value="3"
+                className="mask mask-star-2 bg-orange-400"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                value="4"
+                className="mask mask-star-2 bg-orange-400"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                value="5"
+                className="mask mask-star-2 bg-orange-400"
+              />
+            </div> */}
+            <button className="btn ">review</button>
+          </form>
+        </div>
+      </div>
       <ToastContainer />
     </div>
   );
