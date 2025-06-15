@@ -27,6 +27,7 @@ const Navbar = () => {
       <NavLink to="/bookShelf">BookShelf</NavLink>
       <NavLink to="/addBook">Add Book</NavLink>
       <NavLink to={`/myBook/${user?.email}`}>My Book</NavLink>
+      {user && <NavLink to={`/userProfile/${user?.email}`}>Profile</NavLink>}
     </>
   );
   return (

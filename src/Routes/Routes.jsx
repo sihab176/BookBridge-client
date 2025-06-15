@@ -9,6 +9,8 @@ import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import Details from "../Pages/Details";
 import EditMyBooks from "../Pages/EditMyBooks";
+import PrivetRoute from "../Provider/PrivetRoute";
+import Profile from "../Pages/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -25,12 +27,23 @@ export const router = createBrowserRouter([
 
         Component: BookShelf,
       },
-      { path: "/addBook", Component: AddBook },
+      {
+        path: "/addBook",
+        element: (
+          <PrivetRoute>
+            <AddBook></AddBook>{" "}
+          </PrivetRoute>
+        ),
+      },
       {
         path: "/myBook/:email",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/my-books/${params.email}`),
-        Component: MyBook,
+        element: (
+          <PrivetRoute>
+            <MyBook></MyBook>
+          </PrivetRoute>
+        ),
       },
       { path: "/login", Component: Login },
       { path: "/register", Component: Register },
@@ -38,13 +51,27 @@ export const router = createBrowserRouter([
         path: "/details/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/books/${params.id}`),
-        Component: Details,
+        element: (
+          <PrivetRoute>
+            <Details />
+          </PrivetRoute>
+        ),
       },
       {
         path: "/updateBook/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/books/${params.id}`),
         Component: EditMyBooks,
+      },
+      {
+        path: "/userProfile/:email",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/my-books/${params.email}`),
+        element: (
+          <PrivetRoute>
+            <Profile></Profile>
+          </PrivetRoute>
+        ),
       },
     ],
   },

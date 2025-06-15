@@ -173,9 +173,7 @@ const AddBook = () => {
               </fieldset>
 
               {/* buttons */}
-              {/* <button className="  btn bg-purple-500 text-white w-32 border-0 ml-4">
-                Add Book
-              </button> */}
+            
               <button
                 type="submit"
                 className="relative z-10 px-6 py-3  font-semibold  w-32 ml-4  btn bg-purple-400 overflow-hidden group shadow-xl"

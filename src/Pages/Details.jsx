@@ -4,12 +4,16 @@ import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import Lottie from "lottie-react";
-import reviewAnimition from "../../src/assets/Animation - 1749912324124.json";
+import Review from "../components/Review/Review";
+// import reviewAnimition from "../../src/assets/Animation - 1749912324124.json";
 
 const Details = () => {
   const { user } = use(AuthContext);
   const data = useLoaderData();
   const [singleData, setSingleData] = useState(data);
+  const [state,setState]=useState("")
+  console.log(state);
+
   const {
     Book_Author,
     Book_Title,
@@ -45,15 +49,6 @@ const Details = () => {
       });
   };
 
-  const handleReview = (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const formData = new FormData(form);
-    const bookData = Object.fromEntries(formData.entries());
-    console.log(bookData);
-  };
-
   return (
     <div className="w-11/12 mx-auto  my-20">
       <section className="mt-16 mb-16 flex flex-col md:flex-row justify-center">
@@ -72,14 +67,7 @@ const Details = () => {
             <span className="font-bold">overview</span>{" "}
             <span className="text-gray-400">{overview}</span>
           </p>
-          {/* <div className='flex gap-16 mt-6 items-center'>
-                    <p className='font-bold'>Tag:</p>
-                    <div className='flex gap-16 text-green-400 my-3'>
-                    {
-                        tags.map(tag=><p>{tag}</p>)
-                    }
-                    </div>
-                </div> */}
+         
           <div className="border-b border-gray-400 p-3 "></div>
           <div className="space-y-4 mb-2">
             <p>
@@ -97,65 +85,30 @@ const Details = () => {
             </p>
           </div>
 
-          <button onClick={handleUpVote} className="btn  bg-purple-500 mr-4 ">
-            up vote
-          </button>
+          <div className="flex items-center">
+            <button onClick={handleUpVote} className="btn  bg-purple-500 mr-4 mt-4">
+              up vote
+            </button>
+            {/* Reading status */}
+            <fieldset className="fieldset   rounded-box w-full  p-4">
+              <label className="label">Reading Status</label>
+              <select
+                defaultValue="status"
+                className="select select-accent w-full border-purple-500"
+                name="status"
+                onChange={(e)=>setState(e.target.value)}
+              >
+                <option disabled={true}>status</option>
+                <option>Read</option>
+                <option>Reading</option>
+                <option>Want-to-read</option>
+              </select>
+            </fieldset>
+          </div>
         </div>
       </section>
-      {/* -----------------------  review  */}
-      <div className="flex items-center">
-        <div className="w-[500px]">
-          <Lottie animationData={reviewAnimition} loop={true}></Lottie>
-        </div>
-        <div>
-          <form onSubmit={handleReview}>
-            <fieldset className="fieldset   rounded-box w-full ">
-              <label className="label">User Name</label>
-              <input
-                type="text"
-                className="input w-[600px]  border-purple-500"
-                placeholder="Name.."
-                name="review"
-              />
-            </fieldset>
-            {/* rating */}
-            {/* <div className="rating">
-              <input
-                type="radio"
-                name="rating-2"
-                value="1"
-                className="mask mask-star-2 bg-orange-400"
-              />
-              <input
-                type="radio"
-                name="rating-2"
-                value="2"
-                className="mask mask-star-2 bg-orange-400"
-                defaultChecked
-              />
-              <input
-                type="radio"
-                name="rating-2"
-                value="3"
-                className="mask mask-star-2 bg-orange-400"
-              />
-              <input
-                type="radio"
-                name="rating-2"
-                value="4"
-                className="mask mask-star-2 bg-orange-400"
-              />
-              <input
-                type="radio"
-                name="rating-2"
-                value="5"
-                className="mask mask-star-2 bg-orange-400"
-              />
-            </div> */}
-            <button className="btn ">review</button>
-          </form>
-        </div>
-      </div>
+      {/* -----------------------  review-----------------------  */}
+      <Review userEmail={email} userId={_id}></Review>
       <ToastContainer />
     </div>
   );
