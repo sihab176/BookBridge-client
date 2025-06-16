@@ -2,17 +2,11 @@ import React from "react";
 import { BiLike } from "react-icons/bi";
 import { Link } from "react-router";
 
-
 const CardShower = ({ book, index }) => {
-  console.log(index);
-
   const { Book_Author, Book_Title, Cover_photo, category, upVote, _id } = book;
   return (
     <div key={index}>
-      <div
-        
-        className=" rounded-md shadow-md "
-      >
+      <div className=" rounded-md shadow-md ">
         <div className="relative">
           <div className="bg-sky-100 flex justify-center">
             <img

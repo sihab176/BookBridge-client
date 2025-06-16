@@ -1,14 +1,35 @@
-import React, { useState } from "react";
-import { Link, useLoaderData } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { Link, useLoaderData, useParams } from "react-router";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { VscPreview } from "react-icons/vsc";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const MyBook = () => {
-  const AllBook = useLoaderData();
-  const [myAllBook, SetMyAllBook] = useState(AllBook);
+  const { email } = useParams();
+  const { user } = use(AuthContext);
+  const { accessToken } = user;
+  // const AllBook = useLoaderData();
+  const [myAllBook, SetMyAllBook] = useState([]);
+
+  //! fetch data -------------->
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/my-books/${email}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        SetMyAllBook(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   //fetch delete
   const handleDelete = (id) => {
@@ -66,19 +87,6 @@ const MyBook = () => {
 
   return (
     <section>
-      {/* ----------------------------------  modal ------------------------ */}
-      {/* <dialog id="my_modal_3" className="modal">
-        <div className="modal-box max-w-4xl">
-          <form method="dialog">
-      
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-              ✕
-            </button>
-          </form>
-          
-          
-        </div>
-      </dialog> */}
       {/* ---------------------------------- table -------------------------- */}
       <div
         className="container p-2 mx-auto sm:p-4 h-screen my-16 md:block hidden"
