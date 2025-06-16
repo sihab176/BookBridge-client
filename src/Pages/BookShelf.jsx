@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import CardShower from "../components/Navbar/CardContainer/CardShower";
-// import { all } from "axios";
-// import { data } from "react-router";
+import { inView, motion } from "framer-motion";
 
 const BookShelf = () => {
   const [allData, setAllData] = useState([]);
@@ -32,11 +31,12 @@ const BookShelf = () => {
       });
   }, [newStatus]);
 
-  // console.log(allData.length);
   return (
     <div className="w-11/12 mx-auto my-14">
       {/* search bar  */}
-      <h1 className="text-sky-400 text-4xl font-bold text-center mb-4">All Books</h1>
+      <h1 className="text-sky-400 text-4xl font-bold text-center mb-4">
+        All Books
+      </h1>
 
       <fieldset className="w-full space-y-1 ">
         <label htmlFor="Search" className="hidden">
@@ -98,8 +98,14 @@ const BookShelf = () => {
 
       {/* card  */}
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-28">
-        {allData.map((book) => (
-          <CardShower book={book}></CardShower>
+        {allData.map((book, index) => (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: index * 0.2, duration: 0.5 }}
+          >
+            <CardShower book={book}></CardShower>
+          </motion.div>
         ))}
       </div>
     </div>
