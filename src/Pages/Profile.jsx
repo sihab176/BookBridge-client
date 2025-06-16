@@ -6,7 +6,7 @@ import Chart from "../components/Chart/Chart";
 const Profile = () => {
   const myData = useLoaderData();
   const { user } = use(AuthContext);
-  console.log(user, myData);
+  // console.log(user, myData);
 
 
 

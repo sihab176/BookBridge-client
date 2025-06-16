@@ -15,7 +15,7 @@ const Chart = ({ myData }) => {
     const counts = {};
     data.forEach((book) => {
       const category = book.category;
-      console.log(category);
+      // console.log(category);
       if (counts[category]) {
         counts[category] += 1;
       } else {

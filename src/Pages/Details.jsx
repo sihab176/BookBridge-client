@@ -1,5 +1,5 @@
-import React, { use, useState } from "react";
-import { useLoaderData } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -9,10 +9,16 @@ import Review from "../components/Review/Review";
 
 const Details = () => {
   const { user } = use(AuthContext);
-  const data = useLoaderData();
-  const [singleData, setSingleData] = useState(data);
-  const [state,setState]=useState("")
-  console.log(state);
+  // const data = useLoaderData();
+  const { id } = useParams();
+  const [singleData, setSingleData] = useState();
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/books/${id}`).then((res) => {
+      // console.log(res.data);
+      setSingleData(res.data);
+    });
+  }, []);
 
   const {
     Book_Author,
@@ -28,7 +34,7 @@ const Details = () => {
   } = singleData || {};
   // console.log(category, upVote);
 
-  // handle upvote
+  //? handle upvote ------------>
   const handleUpVote = () => {
     if (user?.email === email) {
       return toast.warn("you cant Upvote own book ");
@@ -49,6 +55,32 @@ const Details = () => {
       });
   };
 
+  //! handle status ----------->
+  const [state, setState] = useState(status);
+
+  const handleStatusChange = (e) => {
+    const current = e.target.value;
+    let newStatus;
+    if (status === "Read") {
+      toast.warn("You have already read this book");
+      return;
+    }
+
+    if (current === "Want-to-Read") {
+      // newStatus = "Reading";
+      newStatus = "Want-to-Read";
+    } else if (current === "Reading") {
+      // newStatus = "Read";
+      newStatus = "Reading";
+    } else {
+      newStatus = "Read";
+      return;
+    }
+
+    console.log("Updated to:", newStatus);
+    setState(newStatus);
+  };
+  // console.log(state, "number down");
   return (
     <div className="w-11/12 mx-auto  my-20">
       <section className="mt-16 mb-16 flex flex-col md:flex-row justify-center">
@@ -67,7 +99,7 @@ const Details = () => {
             <span className="font-bold">overview</span>{" "}
             <span className="text-gray-400">{overview}</span>
           </p>
-         
+
           <div className="border-b border-gray-400 p-3 "></div>
           <div className="space-y-4 mb-2">
             <p>
@@ -85,25 +117,26 @@ const Details = () => {
             </p>
           </div>
 
-          <div className="flex items-center">
-            <button onClick={handleUpVote} className="btn  bg-purple-500 mr-4 mt-4">
+          <div className=" flex items-center gap-4">
+            {/* button upvote */}
+            <button
+              onClick={handleUpVote}
+              className="btn  bg-purple-500 mr-4 mt-4"
+            >
               up vote
             </button>
-            {/* Reading status */}
-            <fieldset className="fieldset   rounded-box w-full  p-4">
-              <label className="label">Reading Status</label>
-              <select
-                defaultValue="status"
-                className="select select-accent w-full border-purple-500"
-                name="status"
-                onChange={(e)=>setState(e.target.value)}
-              >
-                <option disabled={true}>status</option>
-                <option>Read</option>
-                <option>Reading</option>
-                <option>Want-to-read</option>
-              </select>
-            </fieldset>
+            {/* select */}
+            <select
+              className="select select-accent w-full border-purple-500 mt-4"
+              name="status"
+              onChange={handleStatusChange}
+              value={status}
+            >
+              <option disabled>status</option>
+              <option value="Want-to-Read">Want-to-Read</option>
+              <option value="Reading">Reading</option>
+              <option value="Read">Read</option>
+            </select>
           </div>
         </div>
       </section>

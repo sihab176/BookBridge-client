@@ -5,6 +5,7 @@ import { IoEyeOffOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 import { toast, ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
+import { inView, motion } from "framer-motion";
 
 const Register = () => {
   useEffect(() => {
@@ -80,8 +81,13 @@ const Register = () => {
   };
 
   return (
-    <div className="pt-14">
-      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10  mx-auto bg-white border">
+    <div className="my-10">
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={inView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        className="flex flex-col max-w-md p-6 rounded-md sm:p-10  mx-auto bg-accent"
+      >
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
           <p className="text-sm dark:text-gray-600">
@@ -159,7 +165,7 @@ const Register = () => {
             <div>
               <button
                 type="submit"
-                className="w-full px-8 py-3 font-semibold rounded-md bg-yellow-400 hover:bg-blue-900 hover:text-white"
+                className="w-full px-8 py-3 font-semibold rounded-md bg-sky-400 hover:bg-sky-500 hover:text-white"
                 fdprocessedid="xai2ci"
               >
                 Sign Up
@@ -173,7 +179,7 @@ const Register = () => {
         {/* Google */}
         <button
           onClick={handleGoogle}
-          className="btn hover:bg-pink-600  w-full bg-white text-black border-[#e5e5e5]"
+          className="btn hover:bg-pink-300  w-full bg-white text-black border-[#e5e5e5]"
         >
           <svg
             aria-label="Google logo"
@@ -218,7 +224,7 @@ const Register = () => {
           </Link>
           .
         </p>
-      </div>
+      </motion.div>
       <ToastContainer />
     </div>
   );

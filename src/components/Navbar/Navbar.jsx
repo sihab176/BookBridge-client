@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../../assets/test-removebg-preview.png";
 import "./nav.css";
@@ -13,12 +13,31 @@ const Navbar = () => {
   };
 
   //theme
-  const swichTheme = (e) => {
-    if (e.target.checked) {
-      document.querySelector("body").setAttribute("data-theme", "dark");
-    } else {
-      document.querySelector("body").setAttribute("data-theme", "light");
-    }
+  // const swichTheme = (e) => {
+  //   if (e.target.checked) {
+  //     document.querySelector("body").setAttribute("data-theme", "dark");
+  //   } else {
+  //     document.querySelector("body").setAttribute("data-theme", "light");
+  //   }
+  // };
+
+  //!---------------------------->
+  const [isDark, setIsDark] = useState(false);
+
+  // Load theme from localStorage on first render
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    setIsDark(savedTheme === "dark");
+  }, []);
+
+  // Handle switch toggle
+  const switchTheme = (e) => {
+    const darkMode = e.target.checked;
+    const theme = darkMode ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    setIsDark(darkMode);
   };
 
   const links = (
@@ -82,7 +101,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-4">
           {/* toggle buttons */}
-          <div className="mr-8">
+          {/* <div className="mr-8">
             <label
               htmlFor="Toggle1"
               className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-800"
@@ -96,6 +115,25 @@ const Navbar = () => {
                 />
                 <div className="w-10 h-6 rounded-full shadow-inner dark:bg-gray-600 peer-checked:dark:bg-violet-600"></div>
                 <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto dark:bg-gray-100"></div>
+              </span>
+            </label>
+          </div> */}
+          {/* -----------------------------------------> */}
+          <div className="mr-8">
+            <label
+              htmlFor="Toggle1"
+              className="inline-flex items-center space-x-4 cursor-pointer"
+            >
+              <span className="relative">
+                <input
+                  id="Toggle1"
+                  type="checkbox"
+                  onChange={switchTheme}
+                  checked={isDark}
+                  className="hidden peer"
+                />
+                <div className="w-10 h-6 bg-gray-300 rounded-full shadow-inner peer-checked:bg-violet-600 transition-all duration-300"></div>
+                <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 bg-white rounded-full shadow peer-checked:translate-x-4 transition-all duration-300"></div>
               </span>
             </label>
           </div>

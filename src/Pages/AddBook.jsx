@@ -12,6 +12,9 @@ const AddBook = () => {
     const form = e.target;
     const formData = new FormData(form);
     const plantData = Object.fromEntries(formData.entries());
+
+    const upVote = plantData.upVote;
+    plantData.upVote = parseInt(upVote);
     console.log(plantData);
 
     //  fetch by axios
@@ -173,7 +176,7 @@ const AddBook = () => {
               </fieldset>
 
               {/* buttons */}
-            
+
               <button
                 type="submit"
                 className="relative z-10 px-6 py-3  font-semibold  w-32 ml-4  btn bg-purple-400 overflow-hidden group shadow-xl"

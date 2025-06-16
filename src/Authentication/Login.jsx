@@ -1,24 +1,17 @@
 import React, { use, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
 import { toast, ToastContainer } from "react-toastify";
+import { inView, motion } from "framer-motion";
 
 const Login = () => {
   useEffect(() => {
     document.title = "Event | Login";
   }, []);
-  //
-  //   useEffect(() => {
-  //     AOS.init();
-  //     AOS.refresh();
-  //   }, []);
 
   const { loginUser, googleLogin } = use(AuthContext);
   const navigate = useNavigate("/");
   const location = useLocation();
-  // console.log(location);
 
   //handleLogin
   const handleLogin = (e) => {
@@ -40,24 +33,27 @@ const Login = () => {
   const handleGoogleLogIn = () => {
     googleLogin()
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         toast.success("Login successfully ");
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         console.log(error);
-        toast.success(error.message);
+        // toast.success(error.message);
       });
   };
 
   return (
     <div className="my-14 w-11/12 mx-auto">
-      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10   bg-white border">
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={inView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        className="flex flex-col max-w-md mx-auto p-6 rounded-md sm:p-10   bg-accent"
+      >
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Login</h1>
-          <p className="text-sm dark:text-gray-600">
-            Sign in to access your account
-          </p>
+          <p className="text-sm ">Sign in to access your account</p>
         </div>
         <form onSubmit={handleLogin} className="space-y-12">
           <div className="space-y-4">
@@ -82,7 +78,7 @@ const Login = () => {
                 </label>
                 <Link
                   rel="noopener noreferrer"
-                  className="text-xs hover:underline dark:text-gray-600"
+                  className="text-xs hover:underline "
                 >
                   Forgot password?
                 </Link>
@@ -102,7 +98,7 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="w-full px-8 py-3 font-semibold rounded-md bg-yellow-400 "
+                className="w-full px-8 py-3 font-semibold rounded-md bg-sky-400 "
                 fdprocessedid="xai2ci"
               >
                 LogIn
@@ -114,7 +110,7 @@ const Login = () => {
             {/* Google */}
             <button
               onClick={handleGoogleLogIn}
-              className="btn  w-full bg-white text-black border-[#e5e5e5]"
+              className="btn  w-full bg-white hover:bg-pink-300 text-black border-[#e5e5e5]"
             >
               <svg
                 aria-label="Google logo"
@@ -145,7 +141,7 @@ const Login = () => {
               </svg>
               Login with Google
             </button>
-            <p className="px-6 text-sm text-center dark:text-gray-600">
+            <p className="px-6 text-sm text-center ">
               Don't have an account yet?
               <Link to="/register">
                 {" "}
@@ -161,11 +157,8 @@ const Login = () => {
             </p>
           </div>
         </form>
-      </div>
+      </motion.div>
       {/* ----------------------- animation ------------------------ */}
-      <div>
-
-      </div>
       <ToastContainer />
     </div>
   );
