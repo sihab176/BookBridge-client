@@ -2,6 +2,12 @@
 
 Virtual Bookshelf is a modern web application for book lovers to organize, track, and enjoy their reading journey. Built with **React**, **Vite**, and **Tailwind CSS**, it offers a clean, user-friendly interface to manage your books, reviews, and reading status.
 
+## Live Demo
+
+[Book Bridge](https://assignment-11-bookself.web.app)
+
+---
+
 ## Features
 
 - **User Authentication**: Register and log in with email/password or Google.
@@ -17,6 +23,7 @@ Virtual Bookshelf is a modern web application for book lovers to organize, track
 ## Screenshots
 
 ![Home Page](public/vite.svg)
+
 <!-- Add more screenshots as needed -->
 
 ## Getting Started
@@ -29,11 +36,13 @@ Virtual Bookshelf is a modern web application for book lovers to organize, track
 ### Installation
 
 1. **Clone the repository:**
+
    ```sh
    git clone https://github.com/yourusername/virtual-bookshelf.git
    cd virtual-bookshelf
 
    ## Main npm Packages
+   ```
 
 - **react** – UI library for building user interfaces
 - **react-dom** – React DOM rendering
@@ -60,3 +69,4 @@ src/
   assets/            # Images and animations
   [index.css](http://_vscodecontentref_/0)          # Tailwind & DaisyUI styles
   [main.jsx](http://_vscodecontentref_/1)           # App entry point
+```

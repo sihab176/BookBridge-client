@@ -4,6 +4,10 @@ import CardShower from "../components/Navbar/CardContainer/CardShower";
 import { inView, motion } from "framer-motion";
 
 const BookShelf = () => {
+  useEffect(() => {
+    document.title = "Book Bridge | BookShelf";
+  }, []);
+
   const [allData, setAllData] = useState([]);
   const [search, setSearch] = useState("");
 

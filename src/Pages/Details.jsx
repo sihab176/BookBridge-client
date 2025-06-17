@@ -9,6 +9,10 @@ import Swal from "sweetalert2";
 // import reviewAnimition from "../../src/assets/Animation - 1749912324124.json";
 
 const Details = () => {
+  useEffect(() => {
+    document.title = "Book Bridge | Details";
+  }, []);
+
   const { user } = use(AuthContext);
   const { accessToken } = user;
   // const data = useLoaderData();

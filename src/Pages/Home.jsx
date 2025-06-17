@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Banner from "../components/Banner";
 import { useLoaderData } from "react-router";
 import CardContainer from "../components/Navbar/CardContainer/CardContainer";
@@ -8,9 +8,13 @@ import Learner from "../components/ExtraSection/Learner";
 
 const Home = () => {
   const fetchData = useLoaderData();
+  useEffect(() => {
+    document.title = "Book Bridge | Home";
+  }, []);
 
   return (
     <div>
+      
       <Banner />
       <CardContainer fetchData={fetchData}></CardContainer>
       <Featured />

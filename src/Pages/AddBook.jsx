@@ -1,9 +1,13 @@
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddBook = () => {
+  useEffect(() => {
+    document.title = "Book Bridge | AddBook";
+  }, []);
+
   const { user } = use(AuthContext);
   const { accessToken } = user;
   const { email, displayName } = user || {};

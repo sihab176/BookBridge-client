@@ -1,10 +1,14 @@
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const EditMyBooks = () => {
+  useEffect(() => {
+    document.title = "Book Bridge | EditBook";
+  }, []);
+
   const { user } = use(AuthContext);
   const { accessToken } = user;
   const { email, displayName } = user || {};

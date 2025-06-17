@@ -1,16 +1,19 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { useLoaderData, useParams } from "react-router";
+import { useParams } from "react-router";
 import Chart from "../components/Chart/Chart";
 import axios from "axios";
 
 const Profile = () => {
+  useEffect(() => {
+    document.title = "Book Bridge | Profile";
+  }, []);
+
   const [myData, setMyData] = useState([]);
   const { email } = useParams();
-  // const myData = useLoaderData();
+
   const { user } = use(AuthContext);
   const { accessToken } = user;
-  // console.log(user, myData);
 
   useEffect(() => {
     axios
