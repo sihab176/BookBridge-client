@@ -17,7 +17,7 @@ const Review = ({ userId }) => {
   //!------------------------ post ------------------>
   useEffect(() => {
     axios
-      .get("http://localhost:3000/review")
+      .get("https://assignment-11-server-six-alpha.vercel.app/review")
       .then((res) => {
         setData(res.data);
       })
@@ -51,7 +51,10 @@ const Review = ({ userId }) => {
     }
     //! ------------------- post --------------- >
     axios
-      .post("http://localhost:3000/review", finalData)
+      .post(
+        "https://assignment-11-server-six-alpha.vercel.app/review",
+        finalData
+      )
       .then((res) => {
         console.log(res.data);
         setTrue(!isTrue);
@@ -88,7 +91,9 @@ const Review = ({ userId }) => {
         if (result.isConfirmed) {
           console.log("hello im delete :", id);
           axios
-            .delete(`http://localhost:3000/review/${id}`)
+            .delete(
+              `https://assignment-11-server-six-alpha.vercel.app/review/${id}`
+            )
 
             .then((res) => {
               console.log(res.data);
@@ -164,7 +169,10 @@ const Review = ({ userId }) => {
           </div>
           {/*  review of the  all user */}
           {allReviews?.map((review) => (
-            <div key={review._id} className="flex items-center border-b border-sky-400">
+            <div
+              key={review._id}
+              className="flex items-center border-b border-sky-400"
+            >
               <div className="p-5">
                 <img
                   className="w-20 "

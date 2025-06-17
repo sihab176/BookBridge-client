@@ -14,11 +14,14 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/my-books/${email}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
+      .get(
+        `https://assignment-11-server-six-alpha.vercel.app/my-books/${email}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res.data);
         setMyData(res.data);

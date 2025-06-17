@@ -11,9 +11,12 @@ const EditReview = ({ review, setTrue, isTrue }) => {
 
     //
     axios
-      .put(`http://localhost:3000/review/${review?._id}`, {
-        user_review: updateReview,
-      })
+      .put(
+        `https://assignment-11-server-six-alpha.vercel.app/review/${review?._id}`,
+        {
+          user_review: updateReview,
+        }
+      )
       .then((res) => {
         setTrue(!isTrue);
         toast.success("you successfully update a review");

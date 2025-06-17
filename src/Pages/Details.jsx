@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -14,14 +14,17 @@ const Details = () => {
   // const data = useLoaderData();
   const { id } = useParams();
   const [singleData, setSingleData] = useState();
-  const navigate = useNavigate("");
+
+  const [isTrue, setTrue] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/books/${id}`).then((res) => {
-      // console.log(res.data);
-      setSingleData(res.data);
-    });
-  }, []);
+    axios
+      .get(`https://assignment-11-server-six-alpha.vercel.app/books/${id}`)
+      .then((res) => {
+        // console.log(res.data);
+        setSingleData(res.data);
+      });
+  }, [isTrue]);
 
   const {
     Book_Author,
@@ -49,7 +52,10 @@ const Details = () => {
 
     // axios
     axios
-      .post(`http://localhost:3000/upVote/${_id}`, upVoteInfo)
+      .post(
+        `https://assignment-11-server-six-alpha.vercel.app/upVote/${_id}`,
+        upVoteInfo
+      )
       .then((res) => {
         console.log(res);
         setSingleData((prev) => {
@@ -61,6 +67,7 @@ const Details = () => {
   //! handle status ----------->
 
   const [state, setState] = useState(status);
+
   useEffect(() => {
     if (status) {
       setState(status);
@@ -69,6 +76,10 @@ const Details = () => {
 
   const handleStatusChange = (e) => {
     const current = e.target.value;
+    if (user?.email !== email) {
+      toast.warn("This is not your book you can not change this.");
+      return;
+    }
 
     if (state === "Read") {
       toast.warn("You can not change the status");
@@ -78,34 +89,37 @@ const Details = () => {
       return;
     }
     setState(current);
+    setTrue(!isTrue);
   };
   // console.log("state", state);
-  console.log(_id);
 
   useEffect(() => {
-    axios
-      .put(
-        `http://localhost:3000/books/${_id}`,
-        { status: state },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      )
-      .then((res) => {
-        if (res.data.modifiedCount) {
-          Swal.fire({
-            title: "successfully update the book",
-            icon: "success",
-            draggable: true,
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [state]);
+    if (_id) {
+      axios
+        .put(
+          `https://assignment-11-server-six-alpha.vercel.app/books/${_id}`,
+          { status: state },
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data.modifiedCount) {
+            Swal.fire({
+              title: "successfully update the book",
+              icon: "success",
+              draggable: true,
+            });
+          }
+          setTrue(!isTrue);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isTrue]);
 
   return (
     <div className="w-11/12 mx-auto  my-20">

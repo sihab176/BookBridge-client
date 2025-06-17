@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const AddBook = () => {
   const { user } = use(AuthContext);
-   const { accessToken } = user;
+  const { accessToken } = user;
   const { email, displayName } = user || {};
 
   const handleSubmit = (e) => {
@@ -21,11 +21,15 @@ const AddBook = () => {
     //  fetch by axios
 
     axios
-      .post("http://localhost:3000/books", plantData ,{
-         headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
+      .post(
+        "https://assignment-11-server-six-alpha.vercel.app/books",
+        plantData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res.data);
         Swal.fire({

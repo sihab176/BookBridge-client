@@ -17,11 +17,14 @@ const MyBook = () => {
   //! fetch data -------------->
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/my-books/${email}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
+      .get(
+        `https://assignment-11-server-six-alpha.vercel.app/my-books/${email}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res.data);
         SetMyAllBook(res.data);
@@ -54,7 +57,9 @@ const MyBook = () => {
         if (result.isConfirmed) {
           console.log("hello im delete :", id);
           axios
-            .delete(`http://localhost:3000/books/${id}`)
+            .delete(
+              `https://assignment-11-server-six-alpha.vercel.app/books/${id}`
+            )
 
             .then((res) => {
               console.log(res.data);

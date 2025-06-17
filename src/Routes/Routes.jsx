@@ -11,6 +11,7 @@ import Details from "../Pages/Details";
 import EditMyBooks from "../Pages/EditMyBooks";
 import PrivetRoute from "../Provider/PrivetRoute";
 import Profile from "../Pages/Profile";
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -19,8 +20,16 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:3000/books"),
+        loader: () =>
+          fetch("https://assignment-11-server-six-alpha.vercel.app/books"),
         Component: Home,
+        hydrateFallbackElement: (
+          <div className="flex-col gap-4 w-full flex items-center justify-center h-screen">
+            <div className="w-20 h-20 border-4 border-transparent text-blue-400 text-4xl animate-spin flex items-center justify-center border-t-blue-400 rounded-full">
+              <div className="w-16 h-16 border-4 border-transparent text-red-400 text-2xl animate-spin flex items-center justify-center border-t-red-400 rounded-full"></div>
+            </div>
+          </div>
+        ),
       },
       {
         path: "/bookShelf",
@@ -49,7 +58,9 @@ export const router = createBrowserRouter([
       {
         path: "/details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/books/${params.id}`),
+          fetch(
+            `https://assignment-11-server-six-alpha.vercel.app/books/${params.id}`
+          ),
         element: (
           <PrivetRoute>
             <Details />
@@ -59,7 +70,9 @@ export const router = createBrowserRouter([
       {
         path: "/updateBook/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/books/${params.id}`),
+          fetch(
+            `https://assignment-11-server-six-alpha.vercel.app/books/${params.id}`
+          ),
         element: (
           <PrivetRoute>
             <EditMyBooks></EditMyBooks>
@@ -77,4 +90,5 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  { path: "*", Component: ErrorPage },
 ]);
