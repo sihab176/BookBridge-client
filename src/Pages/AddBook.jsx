@@ -16,7 +16,7 @@ const AddBook = () => {
 
     const upVote = plantData.upVote;
     plantData.upVote = parseInt(upVote);
-    console.log(plantData);
+    // console.log(plantData);
 
     //  fetch by axios
 
@@ -31,7 +31,7 @@ const AddBook = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         Swal.fire({
           icon: "success",
           title: "Your successfully added a book ",
@@ -40,7 +40,7 @@ const AddBook = () => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 

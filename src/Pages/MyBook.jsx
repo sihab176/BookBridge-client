@@ -26,11 +26,11 @@ const MyBook = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         SetMyAllBook(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, []);
 
@@ -55,14 +55,14 @@ const MyBook = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          console.log("hello im delete :", id);
+          // console.log("hello im delete :", id);
           axios
             .delete(
               `https://assignment-11-server-six-alpha.vercel.app/books/${id}`
             )
 
             .then((res) => {
-              console.log(res.data);
+              // console.log(res.data);
 
               if (res.data.deletedCount) {
                 swalWithBootstrapButtons.fire({

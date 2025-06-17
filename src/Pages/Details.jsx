@@ -57,7 +57,7 @@ const Details = () => {
         upVoteInfo
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setSingleData((prev) => {
           return { ...prev, upVote: prev.upVote + 1 };
         });
@@ -116,7 +116,7 @@ const Details = () => {
           setTrue(!isTrue);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
     }
   }, [isTrue]);

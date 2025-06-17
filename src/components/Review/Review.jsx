@@ -22,7 +22,7 @@ const Review = ({ userId }) => {
         setData(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }, [userId, isTrue]);
   // console.log(data, userId);
@@ -56,7 +56,7 @@ const Review = ({ userId }) => {
         finalData
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setTrue(!isTrue);
         Swal.fire({
           title: "you successfully add a review",
@@ -65,7 +65,7 @@ const Review = ({ userId }) => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
   //! -------------------- delete -------------->
@@ -89,14 +89,14 @@ const Review = ({ userId }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          console.log("hello im delete :", id);
+          // console.log("hello im delete :", id);
           axios
             .delete(
               `https://assignment-11-server-six-alpha.vercel.app/review/${id}`
             )
 
             .then((res) => {
-              console.log(res.data);
+              // console.log(res.data);
 
               if (res.data.deletedCount) {
                 swalWithBootstrapButtons.fire({

@@ -22,14 +22,14 @@ const EditMyBooks = () => {
     _id,
     upVote,
   } = updateData;
-  console.log(updateData);
+  // console.log(updateData);
 
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const bookData = Object.fromEntries(formData.entries());
-    console.log(bookData);
+    // console.log(bookData);
 
     //axios put method
     axios
@@ -52,7 +52,7 @@ const EditMyBooks = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 

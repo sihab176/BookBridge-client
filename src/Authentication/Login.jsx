@@ -22,7 +22,7 @@ const Login = () => {
 
     loginUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         navigate(`${location.state ? location.state : "/"}`);
 
         Swal.fire({
@@ -50,7 +50,7 @@ const Login = () => {
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         // toast.success(error.message);
       });
   };
