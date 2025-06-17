@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 const AddBook = () => {
   const { user } = use(AuthContext);
+   const { accessToken } = user;
   const { email, displayName } = user || {};
 
   const handleSubmit = (e) => {
@@ -20,7 +21,11 @@ const AddBook = () => {
     //  fetch by axios
 
     axios
-      .post("http://localhost:3000/books", plantData)
+      .post("http://localhost:3000/books", plantData ,{
+         headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((res) => {
         console.log(res.data);
         Swal.fire({

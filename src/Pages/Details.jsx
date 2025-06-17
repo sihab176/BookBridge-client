@@ -1,17 +1,20 @@
 import React, { use, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import Lottie from "lottie-react";
 import Review from "../components/Review/Review";
+import Swal from "sweetalert2";
 // import reviewAnimition from "../../src/assets/Animation - 1749912324124.json";
 
 const Details = () => {
   const { user } = use(AuthContext);
+  const { accessToken } = user;
   // const data = useLoaderData();
   const { id } = useParams();
   const [singleData, setSingleData] = useState();
+  const navigate = useNavigate("");
 
   useEffect(() => {
     axios.get(`http://localhost:3000/books/${id}`).then((res) => {
@@ -56,31 +59,54 @@ const Details = () => {
   };
 
   //! handle status ----------->
+
   const [state, setState] = useState(status);
+  useEffect(() => {
+    if (status) {
+      setState(status);
+    }
+  }, [status]);
 
   const handleStatusChange = (e) => {
     const current = e.target.value;
-    let newStatus;
-    if (status === "Read") {
-      toast.warn("You have already read this book");
+
+    if (state === "Read") {
+      toast.warn("You can not change the status");
       return;
     }
-
-    if (current === "Want-to-Read") {
-      // newStatus = "Reading";
-      newStatus = "Want-to-Read";
-    } else if (current === "Reading") {
-      // newStatus = "Read";
-      newStatus = "Reading";
-    } else {
-      newStatus = "Read";
+    if ((state == "Read" || state == "Reading") && current === "Want-to-Read") {
       return;
     }
-
-    console.log("Updated to:", newStatus);
-    setState(newStatus);
+    setState(current);
   };
-  // console.log(state, "number down");
+  // console.log("state", state);
+  console.log(_id);
+
+  useEffect(() => {
+    axios
+      .put(
+        `http://localhost:3000/books/${_id}`,
+        { status: state },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          Swal.fire({
+            title: "successfully update the book",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [state]);
+
   return (
     <div className="w-11/12 mx-auto  my-20">
       <section className="mt-16 mb-16 flex flex-col md:flex-row justify-center">
@@ -130,7 +156,7 @@ const Details = () => {
               className="select select-accent w-full border-purple-500 mt-4"
               name="status"
               onChange={handleStatusChange}
-              value={status}
+              value={state}
             >
               <option disabled>status</option>
               <option value="Want-to-Read">Want-to-Read</option>

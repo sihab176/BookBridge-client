@@ -26,7 +26,6 @@ const BookShelf = () => {
             (element) => element.status === newStatus
           );
           setAllData(filterData);
-          console.log(filterData);
         }
       });
   }, [newStatus]);

@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import { Link, useLoaderData, useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { VscPreview } from "react-icons/vsc";

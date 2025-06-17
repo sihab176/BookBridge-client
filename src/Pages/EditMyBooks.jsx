@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const EditMyBooks = () => {
   const { user } = use(AuthContext);
+    const { accessToken } = user;
   const { email, displayName } = user || {};
 
   const updateData = useLoaderData();
@@ -32,7 +33,11 @@ const EditMyBooks = () => {
 
     //axios put method
     axios
-      .put(`http://localhost:3000/books/${_id}`, bookData)
+      .put(`http://localhost:3000/books/${_id}`, bookData,{
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((res) => {
         if (res.data.modifiedCount) {
           Swal.fire({

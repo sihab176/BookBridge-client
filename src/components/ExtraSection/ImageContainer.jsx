@@ -44,7 +44,7 @@ const ImageContainer = () => {
             alt=""
           />
           <div>
-            <h1>The Macking bird</h1>
+            <h1>Machu picchu</h1>
             <div className="text-orange-400 flex ">
               <FaStar />
               <FaStar />
@@ -67,7 +67,7 @@ const ImageContainer = () => {
             alt=""
           />
           <div>
-            <h1>The Macking bird</h1>
+            <h1>mockingBird</h1>
             <div className="text-orange-400 flex ">
               <FaStar />
               <FaStar />
@@ -91,7 +91,7 @@ const ImageContainer = () => {
             alt=""
           />
           <div>
-            <h1>The Macking bird</h1>
+            <h1>To Killa</h1>
             <div className="text-orange-400 flex ">
               <FaStar />
               <FaStar />
@@ -113,7 +113,7 @@ const ImageContainer = () => {
             alt=""
           />
           <div>
-            <h1>The Macking bird</h1>
+            <h1>Inca wraith</h1>
             <div className="text-orange-400 flex ">
               <FaStar />
               <FaStar />

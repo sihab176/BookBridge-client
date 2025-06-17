@@ -1,17 +1,32 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useParams } from "react-router";
 import Chart from "../components/Chart/Chart";
+import axios from "axios";
 
 const Profile = () => {
-  const myData = useLoaderData();
+  const [myData, setMyData] = useState([]);
+  const { email } = useParams();
+  // const myData = useLoaderData();
   const { user } = use(AuthContext);
+  const { accessToken } = user;
   // console.log(user, myData);
 
-
-
-
-
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/my-books/${email}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setMyData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="w-11/12  bg-accent rounded-xl md:p-20 mx-auto my-20">
@@ -28,7 +43,7 @@ const Profile = () => {
           </p>
         </div>
       </div>
-    {/* summary */}
+      {/* summary */}
       <div className="border-t py-9">
         <h1 className="text-3xl font-semibold">Book Summary </h1>
         <div className="flex justify-between items-center">
@@ -46,7 +61,9 @@ const Profile = () => {
       </div>
       {/* book by chart  */}
       <div>
-        <p className="text-4xl font-semibold py-14 border-t">Books by Category :</p>
+        <p className="text-4xl font-semibold py-14 border-t">
+          Books by Category :
+        </p>
         <Chart myData={myData}></Chart>
       </div>
     </div>

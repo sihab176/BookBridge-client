@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import { inView, motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 const Login = () => {
   useEffect(() => {
@@ -23,7 +24,13 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         navigate(`${location.state ? location.state : "/"}`);
-        toast.success("Login successfully ");
+
+        Swal.fire({
+          icon: "success",
+          title: "welcome to BookBridge ",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         // console.log(error);
@@ -34,7 +41,12 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         // console.log(result);
-        toast.success("Login successfully ");
+        Swal.fire({
+          icon: "success",
+          title: "welcome to BookBridge ",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {

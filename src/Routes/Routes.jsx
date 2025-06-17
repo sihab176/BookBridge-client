@@ -37,8 +37,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myBook/:email",
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/my-books/${params.email}`),
+
         element: (
           <PrivetRoute>
             <MyBook></MyBook>
@@ -61,12 +60,15 @@ export const router = createBrowserRouter([
         path: "/updateBook/:id",
         loader: ({ params }) =>
           fetch(`http://localhost:3000/books/${params.id}`),
-        Component: EditMyBooks,
+        element: (
+          <PrivetRoute>
+            <EditMyBooks></EditMyBooks>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/userProfile/:email",
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/my-books/${params.email}`),
+
         element: (
           <PrivetRoute>
             <Profile></Profile>
