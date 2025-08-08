@@ -20,8 +20,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () =>
-          fetch("https://assignment-11-server-six-alpha.vercel.app/books"),
+        loader: () => fetch("http://localhost:3000/books"),
         Component: Home,
         hydrateFallbackElement: (
           <div className="flex-col gap-4 w-full flex items-center justify-center h-screen">
@@ -65,9 +64,7 @@ export const router = createBrowserRouter([
       {
         path: "/details/:id",
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-six-alpha.vercel.app/books/${params.id}`
-          ),
+          fetch(`http://localhost:3000/books/${params.id}`),
         element: (
           <PrivetRoute>
             <Details />
@@ -77,9 +74,7 @@ export const router = createBrowserRouter([
       {
         path: "/updateBook/:id",
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-six-alpha.vercel.app/books/${params.id}`
-          ),
+          fetch(`http://localhost:3000/books/${params.id}`),
         element: (
           <PrivetRoute>
             <EditMyBooks></EditMyBooks>
@@ -99,3 +94,4 @@ export const router = createBrowserRouter([
   },
   { path: "*", Component: ErrorPage },
 ]);
+// https://assignment-11-server-six-alpha.vercel.app/books

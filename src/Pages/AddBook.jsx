@@ -25,15 +25,11 @@ const AddBook = () => {
     //  fetch by axios
 
     axios
-      .post(
-        "https://assignment-11-server-six-alpha.vercel.app/books",
-        plantData,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      )
+      .post("http://localhost:3000/books", plantData, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((res) => {
         // console.log(res.data);
         Swal.fire({

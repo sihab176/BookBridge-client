@@ -3,7 +3,7 @@ import CardShower from "./CardShower";
 import { inView, motion } from "framer-motion";
 
 const CardContainer = ({ fetchData }) => {
-  const test = fetchData.sort((a, b) => b.upVote - a.upVote);
+  const test = fetchData?.sort((a, b) => b.upVote - a.upVote);
   const mainData = test.slice(0, 6);
 
   return (

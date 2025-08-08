@@ -22,12 +22,10 @@ const Details = () => {
   const [isTrue, setTrue] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`https://assignment-11-server-six-alpha.vercel.app/books/${id}`)
-      .then((res) => {
-        // console.log(res.data);
-        setSingleData(res.data);
-      });
+    axios.get(`http://localhost:3000/books/${id}`).then((res) => {
+      // console.log(res.data);
+      setSingleData(res.data);
+    });
   }, [isTrue]);
 
   const {
@@ -101,7 +99,7 @@ const Details = () => {
     if (_id) {
       axios
         .put(
-          `https://assignment-11-server-six-alpha.vercel.app/books/${_id}`,
+          `http://localhost:3000/books/${_id}`,
           { status: state },
           {
             headers: {

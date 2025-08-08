@@ -14,9 +14,7 @@ const BookShelf = () => {
   const [newStatus, setNewStatus] = useState(null);
   //search
   useEffect(() => {
-    fetch(
-      `https://assignment-11-server-six-alpha.vercel.app/books?searchParams=${search}`
-    )
+    fetch(`http://localhost:3000/books?searchParams=${search}`)
       .then((res) => res.json())
       .then((data) => {
         setAllData(data);
@@ -24,9 +22,7 @@ const BookShelf = () => {
   }, [search]);
 
   useEffect(() => {
-    fetch(
-      `https://assignment-11-server-six-alpha.vercel.app/books?searchParams=${search}`
-    )
+    fetch(`http://localhost:3000/books?searchParams=${search}`)
       .then((res) => res.json())
       .then((data) => {
         if (newStatus) {
