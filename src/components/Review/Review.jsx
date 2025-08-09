@@ -162,8 +162,8 @@ const Review = ({ userId }) => {
             {allReviews.length == 0 && (
               <img
                 className="md:w-[300px]"
-                src="https://cdni.iconscout.com/illustration/premium/thumb/empty-review-illustration-download-in-svg-png-gif-file-formats--blank-feedback-no-comments-rating-unfilled-marketplace-states-pack-windows-interface-illustrations-9824449.png"
-                alt=""
+                src="https://i.ibb.co.com/HpYyyncx/Whats-App-Image-2025-08-09-at-10-48-50-PM-removebg-preview.png"
+                alt="review image"
               />
             )}
           </div>
