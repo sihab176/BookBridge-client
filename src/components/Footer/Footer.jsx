@@ -1,17 +1,12 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+// import { motion } from "framer-motion";
+// import { useInView } from "react-intersection-observer";
 
 const Footer = () => {
-  const [ref, inView] = useInView({ triggerOnce: true });
+  // const [ref, inView] = useInView({ triggerOnce: true });
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 100 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: 0.5, duration: 0.5 }}
-    >
-      <footer className="px-4 divide-y  bg-accent  text-base-content border-t">
+    <div>
+      <footer className="px-4 divide-y  bg-[#124559]  text-white border-t">
         <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
           <div className="lg:w-1/3">
             <a
@@ -143,7 +138,7 @@ const Footer = () => {
           © 1968 Company Co. All rights reserved.
         </div>
       </footer>
-    </motion.div>
+    </div>
   );
 };
 

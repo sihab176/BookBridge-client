@@ -5,6 +5,7 @@ import CardContainer from "../components/Navbar/CardContainer/CardContainer";
 import Featured from "../components/Featured/Featured";
 import ImageContainer from "../components/ExtraSection/ImageContainer";
 import Learner from "../components/ExtraSection/Learner";
+import OfferSection from "../components/ExtraSection/OfferSection";
 
 const Home = () => {
   const fetchData = useLoaderData();
@@ -14,11 +15,11 @@ const Home = () => {
 
   return (
     <div>
-      
       <Banner />
       <CardContainer fetchData={fetchData}></CardContainer>
-      <Featured />
+      {/* <Featured /> */}
       <ImageContainer />
+      <OfferSection />
       <Learner />
     </div>
   );

@@ -14,15 +14,16 @@ const ImageContainer = () => {
   const [ref, inView] = useInView({ triggerOnce: true });
 
   return (
-    <div className="w-11/12 mx-auto my-20">
-      <h1 className="text-5xl text-center font-bold my-20">Special book </h1>
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-10  lg:ml-8">
+    <div className="w-11/12 mx-auto my-20 max-w-[1280px]">
+      <h1 className="text-3xl  font-bold mt-20 mb-10">Special Editions</h1>
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-10  ">
         {/* div-1 */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1 * 0.5, duration: 0.5 }}
+          className="border p-3 border-gray-300 rounded hover:shadow-xl hover:shadow-black/10"
         >
           <section className=" relative  overflow-hidden group">
             <div className="flex justify-center items-center relative  ">
@@ -54,6 +55,7 @@ const ImageContainer = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1 * 0.5, duration: 0.5 }}
+          className="border p-3 border-gray-300 rounded hover:shadow-xl hover:shadow-black/10"
         >
           <section className=" relative  overflow-hidden group">
             <div className="flex justify-center items-center relative  ">
@@ -86,6 +88,7 @@ const ImageContainer = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1 * 0.5, duration: 0.5 }}
+          className="border p-3 border-gray-300 rounded hover:shadow-xl hover:shadow-black/10"
         >
           <section className=" relative  overflow-hidden group">
             <div className="flex justify-center items-center relative  ">
@@ -116,6 +119,7 @@ const ImageContainer = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1 * 0.5, duration: 0.5 }}
+          className="border p-3 border-gray-300 rounded hover:shadow-xl hover:shadow-black/10"
         >
           <section className=" relative  overflow-hidden group">
             <div className="flex justify-center items-center relative  ">

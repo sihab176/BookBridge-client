@@ -11,10 +11,11 @@ const Banner = () => {
     "https://i.ibb.co.com/hFmhZXvt/Black-White-Minimal-Book-Shop-Desktop-Prototype.png";
   const Banner2 =
     "https://i.ibb.co.com/Dfxc3Q07/Beige-Illustrated-Book-Review-You-Tube-Thumbnail.png";
-  const Banner3 = "https://i.ibb.co.com/BVDsjM2x/Brown-Green-Aesthetic-Book-Store-Welcome-Banner.png";
+  const Banner3 =
+    "https://i.ibb.co.com/BVDsjM2x/Brown-Green-Aesthetic-Book-Store-Welcome-Banner.png";
   return (
     <>
-      <div className="h-screen w-full">
+      <div className=" w-full">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -36,9 +37,9 @@ const Banner = () => {
                 className=" h-screen w-full bg-no-repeat  bg-center  bg-cover text-black"
                 style={{ backgroundImage: `url(${Banner1})` }}
               >
-                <div className="md:pl-32 pt-28 space-y-8  md:text-start text-center">
+                <div className="md:pl-32 pt-32 space-y-8  md:text-start text-center">
                   <h1 className="text-5xl font-bold ">
-                    Welcome to our <br /> Book Bridge
+                    Shop Your <br /> Dream Books
                   </h1>
                   <p className="">
                     Seed some happiness with our top picks for smart grow
@@ -62,9 +63,9 @@ const Banner = () => {
                 className=" h-screen w-full bg-no-repeat  bg-center  bg-cover text-black"
                 style={{ backgroundImage: `url(${Banner2})` }}
               >
-                <div className="md:pl-32 pt-28 space-y-8  md:text-start text-center">
+                <div className="md:pl-32 pt-32 space-y-8  md:text-start text-center">
                   <h1 className="text-5xl font-bold ">
-                    Welcome to our <br /> Book Bridge
+                    Shop Your <br /> Dream Books
                   </h1>
                   <p className="">
                     Seed some happiness with our top picks for smart grow
@@ -88,9 +89,9 @@ const Banner = () => {
                 className=" h-screen w-full bg-no-repeat  bg-center  bg-cover text-black"
                 style={{ backgroundImage: `url(${Banner3})` }}
               >
-                <div className="md:pl-32 pt-28 space-y-8  md:text-start text-center">
+                <div className="md:pl-32 pt-32 space-y-8  md:text-start text-center">
                   <h1 className="text-5xl font-bold ">
-                    Welcome to our <br /> Book Bridge
+                    Shop Your <br /> Dream Books
                   </h1>
                   <p className="">
                     Seed some happiness with our top picks for smart grow
