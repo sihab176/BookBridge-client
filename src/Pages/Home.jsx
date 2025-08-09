@@ -17,7 +17,7 @@ const Home = () => {
     <div>
       <Banner />
       <CardContainer fetchData={fetchData}></CardContainer>
-      {/* <Featured /> */}
+      <Featured />
       <ImageContainer />
       <OfferSection />
       <Learner />

@@ -1,61 +1,54 @@
 import React from "react";
-import { FaBookAtlas } from "react-icons/fa6";
-import { GiBookCover } from "react-icons/gi";
-import { SiMdbook } from "react-icons/si";
-import { BiSolidBook } from "react-icons/bi";
+
+import { GiFigurehead } from "react-icons/gi";
+import { PiPlanetDuotone } from "react-icons/pi";
+import { GiFamilyHouse } from "react-icons/gi";
+import { GiLoveMystery } from "react-icons/gi";
+import { GiSecretBook } from "react-icons/gi";
+import { GiMagicBroom } from "react-icons/gi";
 
 const Featured = () => {
   return (
     <div>
-      <section className="w-11/12 mx-auto my-20 ">
-        <h1 className="text-5xl font-bold text-center py-10">
-          All Books Categories
-        </h1>
-        <div className=" grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-10 ">
-          {/* card -1 */}
-          <div className="  bg-base-100 shadow-2xl shadow-purple-300 space-y-7 text-center p-5 rounded md:mr-4">
-            <div className="flex justify-center">
-              <GiBookCover size={42} />
-            </div>
-            <h1 className="font-bold text-2xl">Fantasy </h1>
-            <p>
-              Imaginative <br /> stories created by the author. <br /> Includes
-              novels pot
-            </p>
-          </div>
-          {/* card -2 */}
-          <div className="  bg-base-100 shadow-2xl shadow-purple-300 space-y-7 text-center p-5 rounded md:mr-4">
-            <div className="flex justify-center">
-              <FaBookAtlas size={42} />
-            </div>
-            <h1 className="font-bold text-2xl"> Non-Fiction</h1>
-            <p>
-              Based on real <br /> facts, events . Informative <br /> and
-              educational
-            </p>
-          </div>
-          {/* card -3 */}
-          <div className="  bg-base-100 shadow-2xl shadow-purple-300 space-y-7 text-center p-5 rounded md:mr-4">
-            <div className="flex justify-center">
-              <SiMdbook size={42} />
-            </div>
-            <h1 className="font-bold text-2xl">Fantasy</h1>
-            <p>
-              Focuses on <br /> solving a crime or uncovering <br /> secrets.
-              Often includes
-            </p>
-          </div>
-          {/* card -4 */}
-          <div className="  bg-base-100 shadow-2xl shadow-purple-300 space-y-7 text-center p-5 rounded md:mr-4">
-            <div className="flex justify-center">
-              <BiSolidBook size={42} />
-            </div>
-            <h1 className="font-bold text-2xl">Biography</h1>
-            <p>
-              The real-life <br /> story of a person’s life and <br />{" "}
-              achievements.
-            </p>
-          </div>
+      <section className="w-11/12 mx-auto max-w-[1280px] pt-20 pb-28  px-6  bg-[#f2e9e4] lora-font">
+        <h1 className="text-3xl font-bold   pb-8 text-black ">Top categories</h1>
+        <div className="grid lg:grid-cols-6 grid-cols-2  md:grid-cols-3 gap-10">
+          <section className="border border-gray-400 text-center py-9 rounded ">
+            <h1 className="flex text-[#d4a373] justify-center ">
+              <GiFigurehead size={72} />
+            </h1>
+            <h3 className="text-3xl mt-3 text-[#582f0e] ">Horror</h3>
+          </section>
+          <section className="border border-gray-400 text-center py-9 rounded">
+            <h1 className="flex text-[#d4a373] justify-center">
+              <PiPlanetDuotone size={72} />
+            </h1>
+            <h3 className="text-3xl mt-3 text-[#582f0e]">Fiction</h3>
+          </section>
+          <section className="border border-gray-400 text-center py-9 rounded">
+            <h1 className="flex text-[#d4a373] justify-center">
+              <GiFamilyHouse size={72} />
+            </h1>
+            <h3 className="text-3xl mt-3 text-[#582f0e]">Family</h3>
+          </section>
+          <section className="border border-gray-400 text-center py-9 rounded">
+            <h1 className="flex text-[#d4a373] justify-center">
+              <GiLoveMystery size={72} />
+            </h1>
+            <h3 className="text-3xl mt-3 text-[#582f0e]">Romance</h3>
+          </section>
+          <section className="border border-gray-400 text-center py-9 rounded">
+            <h1 className="flex text-[#d4a373] justify-center">
+              <GiSecretBook size={72} />
+            </h1>
+            <h3 className="text-3xl mt-3 text-[#582f0e]">Horror</h3>
+          </section>
+          <section className="border border-gray-400 text-center py-9 rounded">
+            <h1 className="flex text-[#d4a373] justify-center">
+              <GiMagicBroom size={72} />
+            </h1>
+            <h3 className="text-3xl mt-3 text-[#582f0e]">Horror</h3>
+          </section>
         </div>
       </section>
     </div>

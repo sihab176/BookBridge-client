@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:wght@400;700&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
 
@@ -25,4 +28,16 @@
   --color-base-200: #f3f3f3;
   --color-base-300: #e7e7e7;
   --color-accent: #1f2937;
+}
+.lora-font {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; 
+  font-style: normal;
+}
+.logo-font {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-style: normal;
+ 
 }

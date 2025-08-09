@@ -15,7 +15,7 @@ const Banner = () => {
     "https://i.ibb.co.com/BVDsjM2x/Brown-Green-Aesthetic-Book-Store-Welcome-Banner.png";
   return (
     <>
-      <div className=" w-full">
+      <div className=" w-full lora-font">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}

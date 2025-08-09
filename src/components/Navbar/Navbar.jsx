@@ -12,15 +12,6 @@ const Navbar = () => {
     logOutUser();
   };
 
-  //theme
-  // const swichTheme = (e) => {
-  //   if (e.target.checked) {
-  //     document.querySelector("body").setAttribute("data-theme", "dark");
-  //   } else {
-  //     document.querySelector("body").setAttribute("data-theme", "light");
-  //   }
-  // };
-
   //!---------------------------->
   const [isDark, setIsDark] = useState(false);
 
@@ -88,10 +79,10 @@ const Navbar = () => {
               src={Logo}
               alt=""
             />
-            <i className="text-2xl font-bold text-gray-400 flex">
+            <h2 className="text-2xl font-bold text-gray-400 flex logo-font">
               <span className="text-blue-400">Book</span>
               <span className="lg:block hidden">Bridge</span>
-            </i>
+            </h2>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
