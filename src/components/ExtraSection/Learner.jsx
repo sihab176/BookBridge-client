@@ -6,6 +6,7 @@ import Girl from "../../assets/girl-1-removebg-preview.png";
 
 const Learner = () => {
   const [ref, inView] = useInView({ triggerOnce: true });
+
   return (
     <div className="w-11/12 mx-auto my-20 max-w-[1280px]">
       <h1 className="text-4xl font-bold  my-20">Our Latest Blog</h1>
@@ -17,16 +18,18 @@ const Learner = () => {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="space-y-3"
         >
-          <h1 className="text-4xl font-bold">
-            Best Choice For <br /> Learners
+          <h1 className="text-3xl font-bold ">
+            Best Choice For <br />{" "}
+            <span className="text-[#5fa8d3]">Learners</span>
           </h1>
           <div className="pt-6">
             <i>
               Bookshelf is a modern web application designed to help you
-              organize, track, and <br /> enjoy your reading journey. Whether{" "}
-              you’re a casual reader or a dedicated <br /> bookworm . Bookshelf{" "}
-              provides a clean, user-friendly interface to manage <br /> your
-              books in three key categories:
+              organize, track,
+              <br /> and enjoy your reading journey. Whether you’re a casual
+              reader or a <br /> dedicated bookworm . Bookshelf provides a
+              clean, user-friendly <br /> interface to manage your books in
+              three key categories:
             </i>
           </div>
           <br />
