@@ -6,13 +6,15 @@ import Swal from "sweetalert2";
 import EditReview from "./EditReview";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { useNavigate } from "react-router";
 
 const Review = ({ userId }) => {
   const { user } = use(AuthContext);
-  const { photoURL, displayName } = user;
+  const { photoURL, displayName } = user ?? {};
   const reviewEmail = user?.email;
   const [isTrue, setTrue] = useState(false);
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   //!------------------------ post ------------------>
   useEffect(() => {
@@ -33,6 +35,9 @@ const Review = ({ userId }) => {
 
   const handleReview = (e) => {
     e.preventDefault();
+    if (!user) {
+      return navigate("/login");
+    }
 
     const form = e.target;
     const formData = new FormData(form);

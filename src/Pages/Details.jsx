@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -14,18 +14,19 @@ const Details = () => {
   }, []);
 
   const { user } = use(AuthContext);
-  const { accessToken } = user;
-  // const data = useLoaderData();
+  const { accessToken } = user ?? {};
+  const navigate = useNavigate();
   const { id } = useParams();
   const [singleData, setSingleData] = useState();
-
   const [isTrue, setTrue] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/books/${id}`).then((res) => {
-      // console.log(res.data);
-      setSingleData(res.data);
-    });
+    axios
+      .get(`https://assignment-11-server-six-alpha.vercel.app/books/${id}`)
+      .then((res) => {
+        // console.log(res.data);
+        setSingleData(res.data);
+      });
   }, [isTrue]);
 
   const {
@@ -44,6 +45,9 @@ const Details = () => {
 
   //? handle upvote ------------>
   const handleUpVote = () => {
+    if (!user) {
+      return navigate("/login");
+    }
     if (user?.email === email) {
       return toast.warn("you cant Upvote own book ");
     }
@@ -78,6 +82,9 @@ const Details = () => {
 
   const handleStatusChange = (e) => {
     const current = e.target.value;
+    if (!user) {
+      return navigate("/login");
+    }
     if (user?.email !== email) {
       toast.warn("This is not your book you can not change this.");
       return;
@@ -99,7 +106,7 @@ const Details = () => {
     if (_id) {
       axios
         .put(
-          `http://localhost:3000/books/${_id}`,
+          `https://assignment-11-server-six-alpha.vercel.app/books/${_id}`,
           { status: state },
           {
             headers: {

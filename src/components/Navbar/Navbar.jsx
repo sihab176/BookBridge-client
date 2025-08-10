@@ -73,17 +73,19 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div className="flex items-center gap-3">
-            <img
-              className="lg:w-14 w-10    lg:block hidden"
-              src={Logo}
-              alt=""
-            />
-            <h2 className="text-2xl font-bold text-gray-400 flex logo-font">
-              <span className="text-blue-400">Book</span>
-              <span className="lg:block hidden">Bridge</span>
-            </h2>
-          </div>
+          <Link to="/">
+            <div className="flex items-center gap-3">
+              <img
+                className="lg:w-14 w-10    lg:block hidden"
+                src={Logo}
+                alt=""
+              />
+              <h2 className="text-2xl font-bold text-gray-400 flex logo-font">
+                <span className="text-blue-400">Book</span>
+                <span className="lg:block hidden">Bridge</span>
+              </h2>
+            </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1  font-semibold gap-7 ">

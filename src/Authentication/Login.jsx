@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import { inView, motion } from "framer-motion";
 import Swal from "sweetalert2";
+import Logo from "../assets/test-removebg-preview.png";
 
 const Login = () => {
   useEffect(() => {
@@ -64,7 +65,16 @@ const Login = () => {
         className="flex flex-col max-w-md mx-auto p-6 rounded-md sm:p-10   bg-accent"
       >
         <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Login</h1>
+          <div className="flex justify-center items-center mr-4">
+            <Link to="/">
+              <img
+                className="lg:w-14 w-10    lg:block hidden"
+                src={Logo}
+                alt=""
+              />
+            </Link>
+            <h1 className="my-3 text-4xl font-bold">Login</h1>
+          </div>
           <p className="text-sm ">Sign in to access your account</p>
         </div>
         <form onSubmit={handleLogin} className="space-y-12">

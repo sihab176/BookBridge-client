@@ -26,7 +26,7 @@ const EditMyBooks = () => {
     _id,
     upVote,
   } = updateData;
-  // console.log(updateData);
+  console.log(updateData);
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -37,11 +37,15 @@ const EditMyBooks = () => {
 
     //axios put method
     axios
-      .put(`http://localhost:3000/books/${_id}`, bookData, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
+      .put(
+        `https://assignment-11-server-six-alpha.vercel.app/books/${_id}`,
+        bookData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
       .then((res) => {
         if (res.data.modifiedCount) {
           Swal.fire({

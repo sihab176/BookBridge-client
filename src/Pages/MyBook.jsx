@@ -61,7 +61,9 @@ const MyBook = () => {
         if (result.isConfirmed) {
           // console.log("hello im delete :", id);
           axios
-            .delete(`http://localhost:3000/books/${id}`)
+            .delete(
+              `https://assignment-11-server-six-alpha.vercel.app/books/${id}`
+            )
 
             .then((res) => {
               // console.log(res.data);
