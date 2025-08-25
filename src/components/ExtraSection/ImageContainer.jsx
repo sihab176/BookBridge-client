@@ -27,11 +27,11 @@ const ImageContainer = () => {
         >
           <section className=" relative  overflow-hidden group">
             <div className="flex justify-center items-center relative  ">
-              <img className="w-[250px] " src={Book1} alt="" />
-              <span className="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-indigo-500 transition-all duration-700 group-hover:h-full   "></span>
+              <img className="w-full " src={Book1} alt="" />
+
               {/* Hidden text that fades in on hover */}
               <div className="absolute inset-0  text-white opacity-0 group-hover:opacity-100 transition-opacity duration-700 ">
-                <img className="w-[250px] " src={Book3} alt="" />
+                <img className="w-full " src={Book3} alt="" />
               </div>
             </div>
             <div className="text-center">
@@ -42,7 +42,7 @@ const ImageContainer = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className="font-bold text-red-500">
+              <p className="font-bold text-sky-500">
                 $760
                 <s className="text-gray-600 ml-1"> $800</s>
               </p>
@@ -59,11 +59,11 @@ const ImageContainer = () => {
         >
           <section className=" relative  overflow-hidden group">
             <div className="flex justify-center items-center relative  ">
-              <img className="w-[250px] " src={Book2} alt="" />
-              <span className="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-indigo-500 transition-all duration-700 group-hover:h-full z-0  "></span>
+              <img className="w-full " src={Book2} alt="" />
+
               {/* Hidden text that fades in on hover */}
               <div className="absolute inset-0  text-white opacity-0 group-hover:opacity-100 transition-opacity duration-700 ">
-                <img className="w-[250px] " src={Book4} alt="" />
+                <img className="w-full " src={Book4} alt="" />
               </div>
             </div>
             <div className="text-center">
@@ -75,7 +75,7 @@ const ImageContainer = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className="font-bold text-red-500">
+              <p className="font-bold text-sky-500">
                 $999
                 <s className="text-gray-600 ml-1"> $1010</s>
               </p>
@@ -92,11 +92,11 @@ const ImageContainer = () => {
         >
           <section className=" relative  overflow-hidden group">
             <div className="flex justify-center items-center relative  ">
-              <img className="w-[250px] " src={Book5} alt="" />
-              <span className="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-indigo-500 transition-all duration-700 group-hover:h-full z-0  "></span>
+              <img className="w-full " src={Book5} alt="" />
+
               {/* Hidden text that fades in on hover */}
               <div className="absolute inset-0  text-white opacity-0 group-hover:opacity-100 transition-opacity duration-700 ">
-                <img className="w-[250px] " src={Book6} alt="" />
+                <img className="w-full " src={Book6} alt="" />
               </div>
             </div>
             <div className="text-center">
@@ -106,7 +106,7 @@ const ImageContainer = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className="font-bold text-red-500">
+              <p className="font-bold text-sky-500">
                 $630
                 <s className="text-gray-600 ml-1"> $690</s>
               </p>
@@ -123,11 +123,11 @@ const ImageContainer = () => {
         >
           <section className=" relative  overflow-hidden group">
             <div className="flex justify-center items-center relative  ">
-              <img className="w-[250px] " src={Book7} alt="" />
-              <span className="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-indigo-500 transition-all duration-700 group-hover:h-full z-0  "></span>
+              <img className="w-full " src={Book7} alt="" />
+
               {/* Hidden text that fades in on hover */}
               <div className="absolute inset-0  text-white opacity-0 group-hover:opacity-100 transition-opacity duration-700 ">
-                <img className="w-[250px] " src={Book8} alt="" />
+                <img className="w-full " src={Book8} alt="" />
               </div>
             </div>
             <div className="text-center">
@@ -138,7 +138,7 @@ const ImageContainer = () => {
                 <FaStar />
                 <FaStar />
               </div>
-              <p className="font-bold text-red-500">
+              <p className="font-bold text-sky-500">
                 $870
                 <s className="text-gray-600 ml-1"> $899</s>
               </p>

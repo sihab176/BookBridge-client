@@ -6,13 +6,13 @@ const CardShower = ({ book, index }) => {
   const { Book_Author, Book_Title, Cover_photo, category, upVote, _id } = book;
   return (
     <div key={index}>
-      <div className=" rounded-md shadow-md ">
+      <div className=" rounded-md shadow-md hover:shadow-2xl ">
         <div className="relative">
           <div className="bg-sky-100 flex justify-center">
             <img
               src={Cover_photo}
               alt=""
-              className="object-cover py-6 object-center w-[200px] rounded-t-md h-[270px] "
+              className="object-cover py-6 object-center w-[120px] rounded-t-md h-[230px] "
             />
           </div>
           <button className="absolute bottom-[-10px] bg-purple-400  px-5 rounded-full ml-5 flex items-center gap-1">

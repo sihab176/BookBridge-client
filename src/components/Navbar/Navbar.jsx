@@ -35,14 +35,16 @@ const Navbar = () => {
     <>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/bookShelf">BookShelf</NavLink>
-      <NavLink to="/addBook">Add Book</NavLink>
-      <NavLink to={`/myBook/${user?.email}`}>My Book</NavLink>
+      {user && <NavLink to="/addBook">Add Book</NavLink>}
+      {user && <NavLink to={`/myBook/${user?.email}`}>My Book</NavLink>}
       {user && <NavLink to={`/userProfile/${user?.email}`}>Profile</NavLink>}
+      <NavLink to="/contact">Contact Us</NavLink>
+      <NavLink to="/about">About </NavLink>
     </>
   );
   return (
     <nav className="sticky top-0 z-10 ">
-      <div className={`navbar md:px-16  bg-base-100   `}>
+      <div className={`navbar md:px-10  bg-base-200   `}>
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -80,15 +82,15 @@ const Navbar = () => {
                 src={Logo}
                 alt=""
               />
-              <h2 className="text-2xl font-bold text-gray-400 flex logo-font">
-                <span className="text-blue-400">Book</span>
+              <h2 className="text-2xl font-bold  flex logo-font">
+                <span className="text-[#e6bf84]">Book</span>
                 <span className="lg:block hidden">Bridge</span>
               </h2>
             </div>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1  font-semibold gap-7 ">
+          <ul className="menu menu-horizontal px-1  font-semibold gap-9 ">
             {links}
           </ul>
         </div>
@@ -112,7 +114,7 @@ const Navbar = () => {
             </label>
           </div> */}
           {/* -----------------------------------------> */}
-          <div className="mr-8">
+          <div className="md:mr-8">
             <label
               htmlFor="Toggle1"
               className="inline-flex items-center space-x-4 cursor-pointer"
@@ -138,7 +140,7 @@ const Navbar = () => {
                 className="container cursor-pointer"
               >
                 <img
-                  className={`lg:w-8 lg:h-8 md:-10  w-8 rounded-full ring-2 ring-offset-4 `}
+                  className={`lg:w-8 lg:h-8   w-8 h-8  rounded-full ring-2 ring-offset-4 `}
                   src={user?.photoURL}
                   alt=""
                 />

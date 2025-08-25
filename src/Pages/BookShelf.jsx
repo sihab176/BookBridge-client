@@ -39,17 +39,17 @@ const BookShelf = () => {
   }, [newStatus]);
 
   return (
-    <div className="w-11/12 mx-auto my-14">
+    <div className=" md:mx-10 my-10 min-h-screen">
       {/* search bar  */}
-      <h1 className="text-sky-400 text-4xl font-bold text-center mb-4">
-        All Books
+      <h1 className=" text-4xl font-bold  mb-12">
+        Bridge Book Collection Search & Filter Books
       </h1>
 
       <fieldset className="w-full space-y-1 ">
         <label htmlFor="Search" className="hidden">
           Search
         </label>
-        <div className="flex justify-center items-center mb-10">
+        <div className="flex justify-between items-center mb-10">
           <div className="relative " bis_skin_checked="1">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2">
               <button
@@ -72,14 +72,14 @@ const BookShelf = () => {
               onChange={(e) => setSearch(e.target.value)}
               name="Search"
               placeholder="Search..."
-              className="md:w-[550px] py-3 pl-10 px-2 text-sm rounded-l-4xl border border-sky-600 focus:outline-violet-600"
+              className="md:w-[550px] py-3 pl-10 px-2 text-sm  border border-sky-600 focus:outline-violet-600"
             />
           </div>
           {/* Reading status */}
           <fieldset className="fieldset">
             <select
               defaultValue="status"
-              className="select select-accent md:w-32 h-[46px] bg-purple-400 border-purple-500 rounded-none rounded-r-4xl"
+              className="select select-accent md:w-32 h-[46px] bg-sky-200 border-purple-500 rounded-none "
               name="status"
               onChange={(e) => setNewStatus(e.target.value)}
             >
@@ -104,7 +104,7 @@ const BookShelf = () => {
       </div>
 
       {/* card  */}
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-28">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
         {allData.map((book, index) => (
           <motion.div
             initial={{ opacity: 0, y: 50 }}

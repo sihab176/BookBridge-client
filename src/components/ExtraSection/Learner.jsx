@@ -8,7 +8,7 @@ const Learner = () => {
   const [ref, inView] = useInView({ triggerOnce: true });
 
   return (
-    <div className="w-11/12 mx-auto my-20 max-w-[1280px]">
+    <div className="w-11/12 mx-auto my-20 lg:ml-20 ">
       <h1 className="text-4xl font-bold  my-20">Our Latest Blog</h1>
       <div className="flex md:flex-row flex-col gap-20 items-center ">
         <motion.div

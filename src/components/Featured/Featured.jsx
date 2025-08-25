@@ -41,7 +41,7 @@ const Featured = () => {
   };
 
   return (
-    <section className="w-11/12 mx-auto max-w-[1280px] pt-20 pb-28 px-6 bg-[#f2e9e4] lora-font">
+    <section className="md:mx-10 pt-20 pb-28 px-6 bg-[#c5dedd] lora-font">
       <motion.h1
         className="text-3xl font-bold pb-8 text-black"
         initial={{ opacity: 0, y: -20 }}

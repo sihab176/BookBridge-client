@@ -14,7 +14,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <Banner />
       <CardContainer fetchData={fetchData}></CardContainer>
       <Featured />

@@ -12,6 +12,8 @@ import EditMyBooks from "../Pages/EditMyBooks";
 import PrivetRoute from "../Provider/PrivetRoute";
 import Profile from "../Pages/Profile";
 import ErrorPage from "../Pages/ErrorPage";
+import ContactPage from "../Pages/ContactPage/ContactPage";
+import AboutPage from "../Pages/AboutPage";
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +97,8 @@ export const router = createBrowserRouter([
           </PrivetRoute>
         ),
       },
+      { path: "/contact", Component: ContactPage },
+      { path: "/about", Component: AboutPage },
     ],
   },
   { path: "*", Component: ErrorPage },

@@ -31,14 +31,14 @@ const Banner = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div className="w-full h-[560px]">
+            <div className="w-full h-[650px]">
               {/* first banner */}
               <div
                 className=" h-screen w-full bg-no-repeat  bg-center  bg-cover text-black"
                 style={{ backgroundImage: `url(${Banner1})` }}
               >
-                <div className="md:pl-32 pt-32 space-y-8  md:text-start text-center">
-                  <h1 className="text-5xl font-bold ">
+                <div className="md:pl-32 lg:pt-44 pt-32 space-y-8  md:text-start text-center">
+                  <h1 className="text-6xl font-bold ">
                     Shop Your <br /> Dream Books
                   </h1>
                   <p className="">
@@ -47,9 +47,12 @@ const Banner = () => {
                     <br /> gardening kits, accessories and more. lights,
                     gardening <br /> kits, accessories and more.
                   </p>
-                  <div className="">
+                  <div className="flex gap-5">
                     <button className="px-9 py-3 bg-sky-700  hover:text-black">
                       SHOP ALL
+                    </button>
+                    <button className="px-9 py-3 bg-gray-200  hover:text-black">
+                      View More
                     </button>
                   </div>
                 </div>
@@ -57,14 +60,14 @@ const Banner = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="w-full h-[560px]">
+            <div className="w-full h-[650px]">
               {/* second banner */}
               <div
                 className=" h-screen w-full bg-no-repeat  bg-center  bg-cover text-black"
                 style={{ backgroundImage: `url(${Banner2})` }}
               >
-                <div className="md:pl-32 pt-32 space-y-8  md:text-start text-center">
-                  <h1 className="text-5xl font-bold ">
+                <div className="md:pl-32 lg:pt-44 pt-32 space-y-8  md:text-start text-center">
+                  <h1 className="text-6xl font-bold ">
                     Shop Your <br /> Dream Books
                   </h1>
                   <p className="">
@@ -73,9 +76,12 @@ const Banner = () => {
                     <br /> gardening kits, accessories and more. lights,
                     gardening <br /> kits, accessories and more.
                   </p>
-                  <div className="">
+                  <div className="flex gap-5">
                     <button className="px-9 py-3 bg-sky-700  hover:text-black">
                       SHOP ALL
+                    </button>
+                    <button className="px-9 py-3 bg-gray-200  hover:text-black">
+                      View More
                     </button>
                   </div>
                 </div>
@@ -83,14 +89,14 @@ const Banner = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="w-full h-[560px]">
+            <div className="w-full h-[650px]">
               {/* second banner */}
               <div
                 className=" h-screen w-full bg-no-repeat  bg-center  bg-cover text-black"
                 style={{ backgroundImage: `url(${Banner3})` }}
               >
-                <div className="md:pl-32 pt-32 space-y-8  md:text-start text-center">
-                  <h1 className="text-5xl font-bold ">
+                <div className="md:pl-32 lg:pt-44 pt-32 space-y-8  md:text-start text-center">
+                  <h1 className="text-6xl font-bold ">
                     Shop Your <br /> Dream Books
                   </h1>
                   <p className="">
@@ -99,9 +105,12 @@ const Banner = () => {
                     <br /> gardening kits, accessories and more. lights,
                     gardening <br /> kits, accessories and more.
                   </p>
-                  <div className="">
+                  <div className=" flex gap-5">
                     <button className="px-9 py-3 bg-sky-700  hover:text-black">
                       SHOP ALL
+                    </button>
+                    <button className="px-9 py-3 bg-white  hover:text-black">
+                      View More
                     </button>
                   </div>
                 </div>
